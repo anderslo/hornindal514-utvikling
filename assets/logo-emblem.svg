@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Hornindal514 Utvikling">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BFE6F8"/>
+      <stop offset="100%" stop-color="#E6F5FD"/>
+    </linearGradient>
+    <!--
+      Ring band runs from r=78 (inner edge) to r=106 (outer edge), middle at r=92.
+      For text to sit centered on the ring band (cap-height ≈ 13px for 17px font):
+        - TOP text:    path at r=86, direction left→right via TOP   (sweep=1 / CW).
+          Glyphs grow OUTWARD (visually upward at top) → text occupies r=86 to r=99.
+        - BOTTOM text: path at r=99, direction left→right via BOTTOM (sweep=0 / CCW).
+          Glyphs grow INWARD (visually upward at bottom = toward centre) → text occupies r=99 to r=86.
+      Both visual centres land at ≈ r=92.5 — right on the middle of the ring band.
+    -->
+    <path id="topArc"    d="M 24 110 A 86 86 0 0 1 196 110" fill="none"/>
+    <path id="bottomArc" d="M 11 110 A 99 99 0 0 0 209 110" fill="none"/>
+  </defs>
+
+  <!-- Outer disc (the blue ring fill) -->
+  <circle cx="110" cy="110" r="106" fill="#0098E0"/>
+  <circle cx="110" cy="110" r="106" fill="none" stroke="#0077B8" stroke-width="1.2"/>
+
+  <!-- Inner disc (sky background for the mountain scene) -->
+  <circle cx="110" cy="110" r="78" fill="url(#sky)"/>
+  <circle cx="110" cy="110" r="78" fill="none" stroke="#0077B8" stroke-width="1.2"/>
+
+  <!-- Mountain silhouette (Hornindalsrokken-inspirert) -->
+  <path d="M 32 154
+           L 60 122
+           L 74 134
+           L 92 108
+           L 112 76
+           L 132 110
+           L 150 96
+           L 170 124
+           L 188 154 Z"
+        fill="#0E1318"/>
+
+  <!-- Snow cap on the main peak -->
+  <path d="M 104 86 L 112 76 L 120 86 L 116 90 L 108 90 Z" fill="#FFFFFF"/>
+
+  <!-- Water / lake stripe (Hornindalsvatnet) - slimmer, sits at the foot of the mountains -->
+  <rect x="32" y="151" width="156" height="3" fill="#0077B8"/>
+  <rect x="32" y="154" width="156" height="2" fill="#0098E0" opacity="0.55"/>
+
+  <!-- "514" badge sits on the mountain silhouette in white -->
+  <text x="110" y="146"
+        font-family="Archivo Black, Inter, sans-serif"
+        font-weight="900"
+        font-size="22"
+        fill="#FFFFFF"
+        text-anchor="middle"
+        letter-spacing="1.5">514</text>
+
+  <!-- Curved text: HORNINDAL — sits on the top of the ring -->
+  <text font-family="Inter, Helvetica, Arial, sans-serif"
+        font-weight="800"
+        font-size="17"
+        fill="#FFFFFF"
+        letter-spacing="3.2">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">
+      HORNINDAL
+    </textPath>
+  </text>
+
+  <!-- Curved text: UTVIKLING — sits on the bottom of the ring, reads left→right, upright -->
+  <text font-family="Inter, Helvetica, Arial, sans-serif"
+        font-weight="800"
+        font-size="17"
+        fill="#FFFFFF"
+        letter-spacing="3.2">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">
+      UTVIKLING
+    </textPath>
+  </text>
+
+  <!-- Small dots flanking the seam between top and bottom text -->
+  <circle cx="20" cy="110" r="2.5" fill="#FFFFFF"/>
+  <circle cx="200" cy="110" r="2.5" fill="#FFFFFF"/>
+</svg>
