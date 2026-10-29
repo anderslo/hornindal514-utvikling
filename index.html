@@ -44,9 +44,9 @@
 
   <main id="hovudinnhald">
 
-    <p class="notice" id="notis-29okt">
-      <strong>Torsdag 29. oktober</strong> presenterer vi Hornindal 514 Utvikling for kommunestyret
-      i Volda, som har møte i Honndalshallen. Kl. 19.00 er det ope folkemøte same stad.
+    <p class="notice" id="notis-12nov">
+      <strong>Ope møte torsdag 12. november kl. 19-21 på Smia.</strong> Kom og høyr korleis du kan
+      bidra til Hornindal 514 Utvikling, anten du er bedrift, lag, organisasjon eller privatperson.
     </p>
 
     <section class="hero">
@@ -133,6 +133,10 @@
             «Det gode liv i Hornindal» frå 2012 og samarbeider tett med
             Volda kommune, Høgskulen i Volda, Nordfjordkompaniet, lokalt
             næringsliv og frivillige.
+          </p>
+          <p>
+            Selskapet jobbar med næringsutvikling og bulyst, medan Hornindal
+            Grendeutval har den politiske rolla overfor kommunen.
           </p>
           <p>
             Smia på Grodås er tenkt som base for selskapet, og skal vere ein
@@ -392,9 +396,9 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Notisen om kommunestyremøtet forsvinn av seg sjølv etter 29. oktober.
-    var notis = document.getElementById('notis-29okt');
-    if (notis && new Date() >= new Date('2026-10-30')) notis.remove();
+    // Notisen om det opne møtet forsvinn av seg sjølv etter 12. november.
+    var notis = document.getElementById('notis-12nov');
+    if (notis && new Date() >= new Date('2026-11-13')) notis.remove();
     (function () {
       var t = document.querySelector('.nav-toggle');
       var n = document.getElementById('hovudmeny');
