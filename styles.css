@@ -1061,3 +1061,37 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 700px) {
   .timeline li { grid-template-columns: 1fr; }
 }
+
+/* Presentasjonen frå kommunestyret (modal med lysbilete) */
+.slides {
+  width: min(1200px, 100vw - 32px, (100vh - 120px) * 16 / 9);
+  max-width: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: #fff;
+  overflow: hidden;
+  outline: none;
+}
+.slides::backdrop { background: rgba(14, 19, 24, 0.85); }
+.slides-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.slides-track img { flex: 0 0 100%; scroll-snap-align: start; }
+.slides-bar { display: flex; align-items: center; gap: 4px; padding: 8px; }
+.slides-bar button, .slides-bar a {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+.slides-bar button:hover, .slides-bar a:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.slides-bar a { margin-left: auto; }

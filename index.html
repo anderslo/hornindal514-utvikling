@@ -332,6 +332,7 @@
             <div>
               <h3>Presentasjon for kommunestyret</h3>
               <p>Saman med Hornindal Grendeutval presenterte vi arbeidet for kommunestyret i Volda i Honndalshallen.</p>
+              <p><a class="btn btn-primary" id="opne-presentasjon" href="assets/kommunestyret-2026/presentasjon.pdf">Sjå presentasjonen</a></p>
             </div>
           </li>
           <li class="kjem">
@@ -342,6 +343,30 @@
             </div>
           </li>
         </ol>
+        <dialog id="presentasjon" class="slides" aria-label="Presentasjonen for kommunestyret 29. oktober 2026" autofocus>
+          <div class="slides-track">
+            <img src="assets/kommunestyret-2026/01.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 1: Hornindal 514 Utvikling AS. Hornindal skal vere ein attraktiv stad å bu, arbeide og besøkje." />
+            <img src="assets/kommunestyret-2026/02.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 2: Kommunen utfordra oss til å tenkje stort." />
+            <img src="assets/kommunestyret-2026/03.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 3: Mykje å byggje på, men ingen som samlar det." />
+            <img src="assets/kommunestyret-2026/04.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 4: Frå idé til selskap på under eitt år." />
+            <img src="assets/kommunestyret-2026/05.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 5: Bedriftene i bygda stiller opp. Seks bedrifter har signert, 182 000 kr i året i tre år." />
+            <img src="assets/kommunestyret-2026/06.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 6: Fire område vi prioriterer." />
+            <img src="assets/kommunestyret-2026/07.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 7: Dette skal vi levere dei tre første åra." />
+            <img src="assets/kommunestyret-2026/08.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 8: Vi har lært av tidlegare forsøk." />
+            <img src="assets/kommunestyret-2026/09.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 9: For kvar krone frå Kraftfondet kjem nesten tre frå andre." />
+            <img src="assets/kommunestyret-2026/10.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 10: Tre ting vi ber kommunestyret om." />
+            <img src="assets/kommunestyret-2026/11.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 11: Fire måtar Kraftfondet kan vere med på." />
+            <img src="assets/kommunestyret-2026/12.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 12: Saman kan vi løfte heile bygda." />
+            <img src="assets/kommunestyret-2026/13.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 13: Korleis kan DU bidra? Ope møte på Smia torsdag 12. november kl. 19-21." />
+            <img src="assets/kommunestyret-2026/14.webp" width="1920" height="1080" loading="lazy" alt="Lysbilete 14: Takk for merksemda. Det gode liv i Hornindal byggjer vi saman." />
+          </div>
+          <div class="slides-bar">
+            <button type="button" data-steg="-1" aria-label="Førre lysbilete">←</button>
+            <button type="button" data-steg="1" aria-label="Neste lysbilete">→</button>
+            <a href="assets/kommunestyret-2026/presentasjon.pdf" download="Hornindal 514 Utvikling, kommunestyret 29. oktober 2026.pdf">Last ned PDF</a>
+            <form method="dialog"><button>Lukk</button></form>
+          </div>
+        </dialog>
       </div>
     </section>
 
@@ -499,6 +524,27 @@
     // Notisen om det opne møtet forsvinn av seg sjølv etter 12. november.
     var notis = document.getElementById('notis-12nov');
     if (notis && new Date() >= new Date('2026-11-13')) notis.remove();
+    // Presentasjonen frå kommunestyret blir vist i ein modal. Utan JavaScript
+    // opnar knappen PDF-en, og #presentasjon i adressa opnar modalen direkte.
+    (function () {
+      var d = document.getElementById('presentasjon');
+      if (!d || !d.showModal) return;
+      var spor = d.querySelector('.slides-track');
+      function bla(steg) { spor.scrollBy(steg * spor.clientWidth, 0); }
+      document.getElementById('opne-presentasjon').addEventListener('click', function (e) {
+        e.preventDefault();
+        d.showModal();
+      });
+      d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+      d.addEventListener('keydown', function (e) {
+        var steg = { ArrowLeft: -1, ArrowRight: 1 }[e.key];
+        if (steg) { e.preventDefault(); bla(steg); }
+      });
+      d.querySelectorAll('[data-steg]').forEach(function (b) {
+        b.addEventListener('click', function () { bla(b.dataset.steg); });
+      });
+      if (location.hash === '#presentasjon') d.showModal();
+    })();
     (function () {
       var t = document.querySelector('.nav-toggle');
       var n = document.getElementById('hovudmeny');
