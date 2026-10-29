@@ -1040,3 +1040,27 @@ button { font: inherit; cursor: pointer; }
   .site-nav a { display: block; font-size: 16px; padding: 12px 12px; border-radius: 8px; }
   .site-nav .nav-cta { display: block; text-align: center; margin: 8px 0 0; }
 }
+
+/* Kalender (tidslinje på framsida) */
+.timeline { list-style: none; margin: 0; padding: 0; max-width: 880px; }
+.timeline li {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 6px 32px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.timeline time {
+  padding-top: 3px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+}
+.timeline h3 { margin: 0; font-size: 18px; }
+.timeline p { margin: 6px 0 0; color: var(--ink-2); }
+.timeline .kjem time { color: var(--coral-deep); }
+@media (max-width: 700px) {
+  .timeline li { grid-template-columns: 1fr; }
+}
