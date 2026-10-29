@@ -564,15 +564,46 @@
         piler[0].disabled = spor.scrollLeft < 1;
         piler[1].disabled = spor.scrollLeft + spor.clientWidth > spor.scrollWidth - 1;
       }
+      // Alle korta er like breie, så kort nr. i ligg på i * breidd().
+      function breidd() { return spor.firstElementChild.getBoundingClientRect().width; }
       // Pilene blar fleire kort om gongen og landar alltid på eit heilt kort,
       // sidan Safari ikkje snappar etter scrollBy.
       piler.forEach(function (b) {
         b.addEventListener('click', function () {
-          var kort = spor.firstElementChild.getBoundingClientRect().width;
-          var tal = Math.max(1, Math.floor(spor.clientWidth * 0.75 / kort));
-          spor.scrollTo(Math.round(spor.scrollLeft / kort + b.dataset.steg * tal) * kort, 0);
+          var tal = Math.max(1, Math.floor(spor.clientWidth * 0.75 / breidd()));
+          spor.scrollTo(Math.round(spor.scrollLeft / breidd() + b.dataset.steg * tal) * breidd(), 0);
         });
       });
+      // Med mus kan ein dra i tidslinja (touch og styreplate scrollar ho sjølv).
+      // Når ein slepp, glir ho til neste heile kort i den retninga ein drog.
+      // mousedown blir avbroten så teksten ikkje blir markert og biletet ikkje
+      // blir dratt ut av sida.
+      var drag = null, dratt = false;
+      spor.addEventListener('mousedown', function (e) { if (e.button === 0) e.preventDefault(); });
+      spor.addEventListener('pointerdown', function (e) {
+        dratt = false;
+        if (e.pointerType === 'mouse' && e.button === 0) drag = { x: e.clientX, left: spor.scrollLeft };
+      });
+      addEventListener('pointermove', function (e) {
+        if (!drag || (!dratt && Math.abs(e.clientX - drag.x) < 6)) return;
+        dratt = true;
+        spor.classList.add('drar');
+        spor.scrollLeft = drag.left - (e.clientX - drag.x);
+      });
+      function slepp() {
+        if (drag && dratt) {
+          var i = spor.scrollLeft / breidd();
+          spor.classList.remove('drar');
+          spor.scrollTo((spor.scrollLeft > drag.left ? Math.ceil(i) : Math.floor(i)) * breidd(), 0);
+        }
+        drag = null;
+      }
+      addEventListener('pointerup', slepp);
+      addEventListener('pointercancel', slepp);
+      // Eit drag som sluttar på biletet skal ikkje opne presentasjonen.
+      spor.addEventListener('click', function (e) {
+        if (dratt) { e.preventDefault(); e.stopPropagation(); }
+      }, true);
       spor.addEventListener('scroll', oppdater);
       oppdater();
       new IntersectionObserver(function (e, o) {

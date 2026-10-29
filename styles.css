@@ -1053,15 +1053,15 @@ button { font: inherit; cursor: pointer; }
 .timeline-nav { display: flex; gap: 8px; }
 .timeline-nav button {
   width: 48px; height: 48px;
-  border: 1px solid var(--line-strong);
+  border: 0;
   border-radius: 50%;
-  background: #fff;
-  color: var(--ink);
+  background: var(--ink);
+  color: #fff;
   font-size: 20px;
-  transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+  transition: background 0.15s ease, opacity 0.15s ease;
 }
-.timeline-nav button:hover:not(:disabled) { background: var(--ink); border-color: var(--ink); color: #fff; }
-.timeline-nav button:disabled { opacity: 0.35; cursor: default; }
+.timeline-nav button:hover:not(:disabled) { background: var(--blue); }
+.timeline-nav button:disabled { opacity: 0.2; cursor: default; }
 
 .timeline {
   --kant: max(24px, (100% - var(--container)) / 2 + 24px);
@@ -1074,10 +1074,15 @@ button { font: inherit; cursor: pointer; }
   scroll-snap-type: x mandatory;
   scroll-padding-inline: var(--kant);
   scrollbar-width: none;
+  cursor: grab;
 }
 @media (prefers-reduced-motion: no-preference) {
   .timeline { scroll-behavior: smooth; }
 }
+/* Medan ein drar med mus: ingen snapping eller mjuk scroll, så tidslinja
+   følgjer musa direkte */
+.timeline.drar { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.timeline.drar a { cursor: inherit; }
 .timeline li {
   position: relative;
   flex: 0 0 min(300px, 80%);
