@@ -141,7 +141,7 @@ button { font: inherit; cursor: pointer; }
   width: auto;
 }
 
-/* Kort notis øvst på framsida */
+/* Kort notis øvst på sidene. På mobil står berre det viktigaste. */
 .notice {
   margin: 0;
   padding: 12px 24px;
@@ -152,6 +152,7 @@ button { font: inherit; cursor: pointer; }
   text-align: center;
 }
 .notice a { color: inherit; font-weight: 600; text-decoration: underline; white-space: nowrap; }
+@media (max-width: 700px) { .notice-meir { display: none; } }
 
 .site-nav {
   display: flex;
