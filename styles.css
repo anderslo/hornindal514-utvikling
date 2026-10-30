@@ -850,7 +850,7 @@ button { font: inherit; cursor: pointer; }
   .header-inner { height: 64px; }
   .brand img { height: 40px; }
   .hero { padding: 40px 0 56px; }
-  .card h3 { padding-right: 72px; }
+  .card-num + h3 { padding-right: 72px; }
 }
 
 @media (max-width: 380px) {
