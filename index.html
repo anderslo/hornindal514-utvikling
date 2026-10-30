@@ -104,6 +104,7 @@
             <span>Kornølfestival</span><span class="dot">·</span>
           </div>
         </div>
+        <button type="button" class="marquee-pause" aria-label="Pause rullande tekst">Pause</button>
 
         <p class="eyebrow eyebrow-light">Måla våre for dei tre første åra</p>
         <ul class="hero-stats">
@@ -627,6 +628,17 @@
         o.disconnect();
         if (spor.scrollLeft < 1) spor.scrollLeft = no.offsetLeft - spor.firstElementChild.offsetLeft;
       }, { threshold: 0.6 }).observe(spor);
+    })();
+    (function () {
+      var m = document.querySelector('.hero-marquee');
+      var p = document.querySelector('.marquee-pause');
+      if (m && p) {
+        p.addEventListener('click', function () {
+          var pause = m.classList.toggle('paused');
+          p.textContent = pause ? 'Start' : 'Pause';
+          p.setAttribute('aria-label', pause ? 'Start rullande tekst' : 'Pause rullande tekst');
+        });
+      }
     })();
     (function () {
       var t = document.querySelector('.nav-toggle');
