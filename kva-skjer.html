@@ -226,6 +226,10 @@
           (august). Gudstenester og konsertar i kyrkja står i
           <a href="https://volda.kyrkja.no/Kalender" target="_blank" rel="noopener noreferrer">kyrkjekalenderen</a>.
         </p>
+        <p class="facts-note agenda-note">
+          Manglar eit arrangement? <a href="#meld-inn">Meld det inn her</a>,
+          så legg vi det inn i kalenderen.
+        </p>
       </div>
     </section>
 
@@ -458,6 +462,39 @@
             datoane for neste år.
           </p>
         </div>
+        <form id="meld-inn" class="meld-inn">
+          <h3>Meld inn eit arrangement</h3>
+          <label class="heil">Kva heiter arrangementet?
+            <input name="Arrangement" required />
+          </label>
+          <label>Dato
+            <input type="date" name="Dato" required />
+          </label>
+          <label>Til og med <span>(om det varer fleire dagar)</span>
+            <input type="date" name="Til og med" />
+          </label>
+          <label>Klokka
+            <input name="Klokka" placeholder="t.d. 19-21" />
+          </label>
+          <label>Stad
+            <input name="Stad" placeholder="t.d. Honndalshallen" />
+          </label>
+          <label>Arrangør
+            <input name="Arrangør" />
+          </label>
+          <label>Lenkje <span>(t.d. til Facebook-arrangementet)</span>
+            <input name="Lenkje" inputmode="url" />
+          </label>
+          <label class="heil">Kort om arrangementet
+            <textarea name="Om arrangementet" rows="3"></textarea>
+          </label>
+          <p class="heil meld-inn-merk">
+            Skjemaet opnar e-posten din med alt ferdig utfylt, så sender du
+            sjølv. Skjer det ingenting, kan du ringje eller skrive til oss,
+            sjå under.
+          </p>
+          <button type="submit" class="btn btn-primary btn-lg">Send arrangementet</button>
+        </form>
         <div class="contact-grid">
           <div class="contact-card">
             <p class="contact-label">Ring eller skriv</p>
@@ -474,9 +511,6 @@
             <p class="contact-value"><a href="https://www.facebook.com/groups/798713742175935" target="_blank" rel="noopener noreferrer">Hornindal på Facebook</a></p>
             <p class="contact-meta">Open gruppe for bygda</p>
           </div>
-        </div>
-        <div class="contact-cta">
-          <a class="btn btn-primary btn-lg" href="mailto:anders.lodemel@hotmail.com?subject=Kva%20skjer%20i%20Hornindal">Send oss eit tips</a>
         </div>
       </div>
     </section>
@@ -518,6 +552,20 @@
     });
     document.querySelectorAll('.agenda').forEach(function (ol) {
       if (!ol.children.length) { ol.previousElementSibling.remove(); ol.remove(); }
+    });
+    // Meld inn arrangement: skjemaet opnar e-posten til lesaren med det som
+    // er fylt ut, eitt felt per linje.
+    // ponytail: krev eit e-postprogram på eininga. Byt til eit eige mottak
+    // (t.d. ein Cloudflare Worker) om folk ikkje får det til.
+    document.getElementById('meld-inn').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var linjer = [];
+      new FormData(this).forEach(function (verdi, felt) {
+        if (verdi.trim()) linjer.push(felt + ': ' + verdi.trim());
+      });
+      location.href = 'mailto:anders.lodemel@hotmail.com?subject=' +
+        encodeURIComponent('Arrangement: ' + this.elements['Arrangement'].value.trim()) +
+        '&body=' + encodeURIComponent(linjer.join('\r\n'));
     });
     (function () {
       var t = document.querySelector('.nav-toggle');
