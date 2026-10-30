@@ -107,6 +107,7 @@ button { font: inherit; cursor: pointer; }
   line-height: 1.45;
   text-align: center;
 }
+.notice a { color: inherit; font-weight: 600; text-decoration: underline; white-space: nowrap; }
 
 .site-nav {
   display: flex;
@@ -1130,6 +1131,7 @@ button { font: inherit; cursor: pointer; }
 }
 .timeline h3 { margin: 10px 0 0; font-size: 18px; line-height: 1.3; }
 .timeline p { margin: 8px 0 0; color: var(--ink-2); font-size: 15.5px; line-height: 1.55; }
+.timeline .btn { margin-top: 16px; }
 
 /* Forsida av presentasjonen opnar modalen */
 .timeline-bilete {

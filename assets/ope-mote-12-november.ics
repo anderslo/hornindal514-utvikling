@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Hornindal 514 Utvikling//nettsida//NN
+BEGIN:VEVENT
+UID:ope-mote-2026-11-12@hornindal514-utvikling
+DTSTAMP:20261030T120000Z
+DTSTART:20261112T180000Z
+DTEND:20261112T200000Z
+SUMMARY:Ope møte med Hornindal 514 Utvikling
+LOCATION:Smia\, Ytrehornsvegen 8\, 6763 Hornindal
+DESCRIPTION:Kom og høyr korleis du kan bidra\, anten du er bedrift\, lag
+ \, organisasjon eller privatperson.
+URL:https://anderslo.github.io/hornindal514-utvikling/
+END:VEVENT
+END:VCALENDAR
