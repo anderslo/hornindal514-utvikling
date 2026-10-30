@@ -1133,7 +1133,7 @@ button { font: inherit; cursor: pointer; }
 .timeline p { margin: 8px 0 0; color: var(--ink-2); font-size: 15.5px; line-height: 1.55; }
 .timeline .btn { margin-top: 16px; }
 
-/* Forsida av presentasjonen opnar modalen */
+/* Bilete i kalenderen, alle i 16:9. Forsida av presentasjonen opnar modalen. */
 .timeline-bilete {
   position: relative;
   display: block;
@@ -1142,6 +1142,7 @@ button { font: inherit; cursor: pointer; }
   overflow: hidden;
   background: var(--ink);
 }
+img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
 .timeline-bilete img { transition: transform 0.3s ease; }
 .timeline-bilete:hover img { transform: scale(1.04); }
 .timeline-bilete span {
