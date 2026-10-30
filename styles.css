@@ -704,6 +704,7 @@ button { font: inherit; cursor: pointer; }
   flex-wrap: wrap;
   gap: 10px;
 }
+.lede + .partners { margin-top: 24px; }
 .partners li {
   background: #fff;
   border: 1px solid var(--line);
