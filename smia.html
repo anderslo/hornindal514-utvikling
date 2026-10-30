@@ -215,10 +215,19 @@
     (function () {
       var t = document.querySelector('.nav-toggle');
       var n = document.getElementById('hovudmeny');
+      function setMeny(open) {
+        n.classList.toggle('open', open);
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        t.setAttribute('aria-label', open ? 'Lukk meny' : 'Opne meny');
+      }
       if (t && n) {
-        t.addEventListener('click', function () {
-          var open = n.classList.toggle('open');
-          t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        t.addEventListener('click', function () { setMeny(!n.classList.contains('open')); });
+        n.addEventListener('click', function (e) { if (e.target.closest('a')) setMeny(false); });
+        n.addEventListener('focusout', function (e) {
+          if (!n.contains(e.relatedTarget) && e.relatedTarget !== t) setMeny(false);
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && n.classList.contains('open')) { setMeny(false); t.focus(); }
         });
       }
     })();
