@@ -693,8 +693,8 @@ button { font: inherit; cursor: pointer; }
 .people li:nth-child(3) .person-avatar { --avatar-bg: linear-gradient(135deg, var(--sun) 0%, var(--sun-deep) 100%); color: var(--ink); }
 .people li:nth-child(4) .person-avatar { --avatar-bg: linear-gradient(135deg, var(--moss) 0%, var(--moss-deep) 100%); }
 .people li:nth-child(5) .person-avatar { --avatar-bg: linear-gradient(135deg, var(--blue-deep) 0%, #003F66 100%); }
-.person-name { margin: 0; font-weight: 600; color: var(--ink); }
-.person-role { margin: 0; font-size: 13.5px; color: var(--muted); }
+.person-name { margin: 0; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+.person-role { margin: 0; font-size: 13.5px; color: var(--muted); overflow-wrap: anywhere; }
 
 /* Partners */
 .partners {
@@ -849,6 +849,10 @@ button { font: inherit; cursor: pointer; }
   body { font-size: 16px; }
   .header-inner { height: 64px; }
   .brand img { height: 40px; }
+}
+
+@media (max-width: 380px) {
+  .people { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
