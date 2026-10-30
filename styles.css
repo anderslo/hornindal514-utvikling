@@ -905,7 +905,8 @@ button { font: inherit; cursor: pointer; }
 
 /* «Tilbake»-lenke øvst i hero */
 .page-back {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 6px;
   font-size: 14px;
