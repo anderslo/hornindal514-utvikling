@@ -46,9 +46,9 @@
 }
 
 :root {
-  --blue: #0098E0;
+  --blue: #0077C8;
   --blue-deep: #006BB4;
-  --blue-soft: #E6F5FD;
+  --blue-soft: #E6F1FA;
 
   /* Warm accents - for life, energy, optimism */
   --sun: #FFC857;
@@ -271,7 +271,7 @@ button { font: inherit; cursor: pointer; }
   height: 6px;
   background: var(--blue);
   border-radius: 3px;
-  box-shadow: 0 1px 8px rgba(0, 152, 224, 0.5);
+  box-shadow: 0 1px 8px rgba(0, 119, 200, 0.5);
 }
 
 .lede {
@@ -971,7 +971,7 @@ button { font: inherit; cursor: pointer; }
 /* Callout / infoboks */
 .callout {
   background: var(--blue-soft);
-  border: 1px solid rgba(0, 152, 224, 0.2);
+  border: 1px solid rgba(0, 119, 200, 0.2);
   border-radius: var(--radius);
   padding: 24px 26px;
 }
