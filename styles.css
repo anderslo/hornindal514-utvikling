@@ -47,14 +47,14 @@
 
 :root {
   --blue: #0098E0;
-  --blue-deep: #0077B8;
+  --blue-deep: #006BB4;
   --blue-soft: #E6F5FD;
 
   /* Warm accents - for life, energy, optimism */
   --sun: #FFC857;
   --sun-deep: #F2A93B;
   --coral: #F26B4A;
-  --coral-deep: #D24E2E;
+  --coral-deep: #BF4526;
   --moss: #5FAD56;
   --moss-deep: #3F8A38;
 
@@ -971,7 +971,7 @@ button { font: inherit; cursor: pointer; }
   content: counter(step);
   position: absolute; left: 0; top: -3px;
   width: 30px; height: 30px;
-  background: var(--blue);
+  background: var(--blue-deep);
   color: #fff;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
