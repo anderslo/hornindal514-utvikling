@@ -49,6 +49,16 @@ DESCRIPTION:Med Kokkekompisene.
 URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
+UID:korpsbasar-2026-11-29@hornindal514-utvikling
+DTSTAMP:20261030T200000Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Korpsbasar\, Hornindal Musikkorps
+LOCATION:Hornindal
+DESCRIPTION:Kvart år: 1. søndag i advent. Tid og stad kjem.
+URL:https://www.facebook.com/people/Hornindal-musikkorps/100067968147082/
+END:VEVENT
+BEGIN:VEVENT
 UID:julemarknad-dolheim-2026-12-06@hornindal514-utvikling
 DTSTAMP:20261030T200000Z
 DTSTART:20261206T110000Z
