@@ -51,11 +51,11 @@ END:VEVENT
 BEGIN:VEVENT
 UID:korpsbasar-2026-11-29@hornindal514-utvikling
 DTSTAMP:20261030T200000Z
-DTSTART;VALUE=DATE:20261129
-DTEND;VALUE=DATE:20261130
+DTSTART:20261129T130000Z
 SUMMARY:Korpsbasar\, Hornindal Musikkorps
 LOCATION:Hornindal
-DESCRIPTION:Kvart år: 1. søndag i advent. Tid og stad kjem.
+DESCRIPTION:Kvart år: 1. søndag i advent\, vanlegvis frå kl. 14. Staden 
+ kjem.
 URL:https://www.facebook.com/people/Hornindal-musikkorps/100067968147082/
 END:VEVENT
 BEGIN:VEVENT
