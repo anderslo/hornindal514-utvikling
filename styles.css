@@ -649,56 +649,55 @@ button { font: inherit; cursor: pointer; }
   backdrop-filter: blur(6px);
 }
 
-/* People - five-up on wide screens (matches the five interim board members) */
+/* Styret: eitt kort per person, fem i rada på brei skjerm. Portretta er
+   små med vilje, sidan profilbileta frå LinkedIn ikkje toler å bli større. */
 .people {
   list-style: none;
   padding: 0; margin: 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-}
-.people li {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  align-content: flex-start;
-  gap: 12px;
-  padding: 14px 14px;
+  justify-content: center;
+  gap: 16px;
+}
+.people li {
+  flex: 0 1 calc((100% - 64px) / 5);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px 14px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-  min-width: 0;
 }
-.people li > div { min-width: 0; }
-.person-avatar + div { flex: 1; }
-.people li:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
-  border-color: var(--line-strong);
-}
-.person-avatar {
-  width: 48px; height: 48px;
+.person-photo {
+  width: 88px; height: 88px;
   border-radius: 50%;
-  background: var(--avatar-bg, var(--blue));
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(14, 19, 24, 0.12);
+  margin-bottom: 16px;
+  background: var(--paper-alt);
+  filter: grayscale(1);
 }
-.people li:nth-child(1) .person-avatar { --avatar-bg: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%); }
-.people li:nth-child(2) .person-avatar { --avatar-bg: linear-gradient(135deg, var(--coral) 0%, var(--coral-deep) 100%); }
-.people li:nth-child(3) .person-avatar { --avatar-bg: linear-gradient(135deg, var(--sun) 0%, var(--sun-deep) 100%); color: var(--ink); }
-.people li:nth-child(4) .person-avatar { --avatar-bg: linear-gradient(135deg, var(--moss) 0%, var(--moss-deep) 100%); }
-.people li:nth-child(5) .person-avatar { --avatar-bg: linear-gradient(135deg, var(--blue-deep) 0%, #003F66 100%); }
-.person-name { margin: 0; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
-.person-role { margin: 0; font-size: 13.5px; color: var(--muted); overflow-wrap: anywhere; }
-.person-bio { flex-basis: 100%; margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.person-name { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.3; color: var(--ink); }
+.person-role { margin: 2px 0 0; font-size: 14px; color: var(--muted); }
+.person-bio { margin: 12px 0 14px; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.person-link {
+  --linkedin: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'/%3E%3C/svg%3E");
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.person-link::before {
+  content: "";
+  width: 18px; height: 18px;
+  background: currentColor;
+  -webkit-mask: var(--linkedin) center / contain no-repeat;
+  mask: var(--linkedin) center / contain no-repeat;
+}
+.person-link:hover { text-decoration: underline; text-underline-offset: 2px; }
 
 /* Partners */
 .partners {
@@ -828,7 +827,7 @@ button { font: inherit; cursor: pointer; }
    Responsive
    ========================================================= */
 @media (max-width: 1080px) {
-  .people { grid-template-columns: repeat(3, 1fr); }
+  .people li { flex-basis: calc((100% - 32px) / 3); }
 }
 
 @media (max-width: 900px) {
@@ -840,7 +839,6 @@ button { font: inherit; cursor: pointer; }
   .cards { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: 1fr; gap: 18px; }
   .contact-grid { grid-template-columns: 1fr; }
-  .people { grid-template-columns: repeat(2, 1fr); }
   .section { padding: 72px 0; }
   .hero {
     padding: 96px 0 80px;
@@ -856,10 +854,18 @@ button { font: inherit; cursor: pointer; }
   .brand img { height: 40px; }
   .hero { padding: 40px 0 56px; }
   .card-num + h3 { padding-right: 72px; }
-}
-
-@media (max-width: 600px) {
-  .people { grid-template-columns: 1fr; }
+  /* Mobil: bilete og namn på éi linje, teksten og lenkja under */
+  .people li {
+    flex-basis: 100%;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+    column-gap: 16px;
+    padding: 20px 20px 10px;
+  }
+  .person-photo { width: 64px; height: 64px; margin: 0; }
+  .person-bio, .person-link { grid-column: 1 / -1; }
+  .person-link { justify-self: start; }
 }
 
 @media (prefers-reduced-motion: reduce) {
