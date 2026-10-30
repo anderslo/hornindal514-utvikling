@@ -19,5 +19,26 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 ├── smia.html                 # Smia
 ├── styles.css                # All styling
 ├── README.md                 # Denne fila
-└── assets/                   # Bilete og favikon
+├── assets/                   # Bilete og favikon
+└── .github/
+    ├── scripts/
+    │   ├── arrangement.py    # Legg godkjende arrangement frå skjemaet inn i kalenderen (berre standardbiblioteket)
+    │   └── lag-skjema.gs     # Lagar Google-skjemaet og reknearket (køyrast ein gong på script.google.com)
+    └── workflows/
+        └── arrangement.yml   # Køyrer arrangement.py kvar time og pushar om noko har endra seg
 ```
+
+## Kalenderen har to kjelder
+
+- **Handskrivne arrangement.** Står i `kva-skjer.html` og `kalender.ics` og blir
+  redigerte for hand, som før.
+- **Arrangement frå skjemaet.** Folk melder inn i eit Google-skjema, og
+  arrangement.py legg dei godkjende inn mellom `kalender:start` og
+  `kalender:slutt` i `kva-skjer.html` (merkte `data-skjema`) og i
+  `kalender.ics` (`UID:skjema-`). Skriptet eig desse, så dei skal ikkje
+  redigerast for hand. Rett i reknearket i staden. Handskrivne arrangement
+  innanfor markørane blir ikkje rørte.
+
+CSV-adressa står i `CSV_URL` øvst i arrangement.py. Test utan nettverk med
+`python3 .github/scripts/arrangement.py --csv fil.csv`, og køyr sjølvtesten med
+`--sjekk`.
