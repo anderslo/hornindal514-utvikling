@@ -13,6 +13,9 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 .
 ├── index.html                # Framsida
 ├── flytt-til-hornindal.html  # Flytt hit
+├── kva-skjer.html            # Kva skjer: kalender, faste tilbod og praktisk kvardag
+├── kalender.ics              # Kalenderen som folk kan abonnere på (same arrangement som på kva-skjer.html)
+├── frivillig.html            # Lag og frivillig arbeid
 ├── smia.html                 # Smia
 ├── styles.css                # All styling
 ├── README.md                 # Denne fila
