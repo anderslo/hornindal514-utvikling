@@ -96,6 +96,7 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--blue-deep); text-decoration: none; }
 a:hover { color: var(--blue); }
+main p a:not(.btn) { text-decoration: underline; text-underline-offset: 2px; }
 
 button { font: inherit; cursor: pointer; }
 
