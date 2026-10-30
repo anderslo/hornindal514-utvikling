@@ -1119,8 +1119,8 @@ button { font: inherit; cursor: pointer; }
   font-size: 20px;
   transition: background 0.15s ease, opacity 0.15s ease;
 }
-.timeline-nav button:hover:not(:disabled) { background: var(--blue); }
-.timeline-nav button:disabled { opacity: 0.2; cursor: default; }
+.timeline-nav button:hover:not([aria-disabled="true"]) { background: var(--blue); }
+.timeline-nav button[aria-disabled="true"] { opacity: 0.2; cursor: default; }
 
 .timeline {
   --kant: max(24px, (100% - var(--container)) / 2 + 24px);

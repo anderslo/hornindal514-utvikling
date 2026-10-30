@@ -578,8 +578,8 @@
       var kjem = spor.querySelector('.kjem');
       var no = kjem ? kjem.previousElementSibling : spor.lastElementChild;
       function oppdater() {
-        piler[0].disabled = spor.scrollLeft < 1;
-        piler[1].disabled = spor.scrollLeft + spor.clientWidth > spor.scrollWidth - 1;
+        piler[0].setAttribute('aria-disabled', spor.scrollLeft < 1);
+        piler[1].setAttribute('aria-disabled', spor.scrollLeft + spor.clientWidth > spor.scrollWidth - 1);
       }
       // Alle korta er like breie, så kort nr. i ligg på i * breidd().
       function breidd() { return spor.firstElementChild.getBoundingClientRect().width; }
