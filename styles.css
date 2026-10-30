@@ -1012,10 +1012,8 @@ button { font: inherit; cursor: pointer; }
   font-weight: 600;
   white-space: nowrap;
 }
-.finans-fokus .finans-merke { background: rgba(191, 69, 38, 0.1); }
 .finans-bar { grid-column: 1 / -1; height: 12px; background: var(--paper-alt); border-radius: 0 4px 4px 0; }
 .finans-bar span { display: block; height: 100%; background: var(--blue-deep); border-radius: 0 4px 4px 0; }
-.finans-fokus .finans-bar span { background: var(--coral-deep); }
 .finans-total {
   display: flex;
   justify-content: space-between;
