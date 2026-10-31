@@ -1399,8 +1399,7 @@ img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
 #kvar-veke .cards + .facts-note { margin-top: 24px; }
 .card .card-lenkje { margin-top: 14px; }
 
-/* Meld inn arrangement: korte felt to og to, lange felt over heile breidda.
-   Felta i same rad står likt sjølv om den eine etiketten går over to linjer. */
+/* Skjemakort: innmelding av arrangement og nyheitsbrevet. .heil går over heile breidda. */
 .meld-inn {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1414,11 +1413,10 @@ img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
   border-radius: var(--radius);
 }
 .meld-inn h3 { grid-column: 1 / -1; margin: 0; font-size: 20px; line-height: 1.3; }
+.meld-inn p { margin: 0; }
 .meld-inn .heil { grid-column: 1 / -1; }
 .meld-inn label { font-size: 14.5px; font-weight: 600; color: var(--ink); }
-.meld-inn label span { font-weight: 400; color: var(--muted); }
-.meld-inn input,
-.meld-inn textarea {
+.meld-inn input {
   display: block;
   width: 100%;
   margin-top: 6px;
@@ -1432,17 +1430,14 @@ img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
   font-size: 16px;
   font-weight: 400;
 }
-.meld-inn input::-webkit-date-and-time-value { text-align: left; }
-.meld-inn input:focus,
-.meld-inn textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
-.meld-inn textarea { resize: vertical; }
-.meld-inn-merk { margin: 0; color: var(--muted); font-size: 13.5px; }
+.meld-inn input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+.meld-inn-merk { color: var(--muted); font-size: 13.5px; }
 .meld-inn .btn { justify-self: start; }
 
 /* Nyheitsbrev: same skjemastil, med knappen ved sida av feltet (under kvarandre på mobil) */
 .nyheitsbrev { grid-template-columns: 1fr auto; max-width: 640px; margin-bottom: 0; }
 .nyheitsbrev .btn { min-height: 48px; }
-.nyheitsbrev-status { margin: 0; font-weight: 600; color: var(--ink); }
+.nyheitsbrev-status { font-weight: 600; color: var(--ink); }
 .nyheitsbrev-status:empty { display: none; }
 
 @media (max-width: 700px) {

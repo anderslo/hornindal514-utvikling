@@ -35,11 +35,13 @@ function lagSkjema() {
   svar.getRange('L1').setValue('Godkjent');
   svar.getRange('L2:L').insertCheckboxes();
 
+  // Semikolon mellom argumenta: setFormula følgjer språkoppsettet i reknearket,
+  // og med norsk oppsett gir komma #ERROR!.
   var pub = ark.insertSheet('Publisert');
-  pub.getRange('A1').setFormula("=QUERY('" + svar.getName() + "'!A:L, \"" +
+  pub.getRange('A1').setFormula("=QUERY('" + svar.getName() + "'!A:L; \"" +
     "select A, B, C, D, E, F, G, H, I, J, K where L = true order by C " +
     "label A 'id', B 'tittel', C 'dato', D 'til', E 'start', F 'slutt', G 'stad', H 'arrangor', I 'lenkje', J 'omtale', K 'regel' " +
-    "format A 'yyyy-mm-dd hh:mm:ss', C 'yyyy-mm-dd', D 'yyyy-mm-dd', E 'hh:mm', F 'hh:mm'\", 1)");
+    "format A 'yyyy-mm-dd hh:mm:ss', C 'yyyy-mm-dd', D 'yyyy-mm-dd', E 'hh:mm', F 'hh:mm'\"; 1)");
 
   // Det tomme standardarket treng vi ikkje.
   ark.getSheets().forEach(function (s) {

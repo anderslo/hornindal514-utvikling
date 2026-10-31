@@ -464,40 +464,19 @@
             datoane for neste år.
           </p>
         </div>
-        <form id="meld-inn" class="meld-inn">
+        <div id="meld-inn" class="meld-inn">
           <h3>Meld inn eit arrangement</h3>
-          <label class="heil">Kva heiter arrangementet?
-            <input name="Arrangement" required />
-          </label>
-          <label>Dato
-            <input type="date" name="Dato" required />
-          </label>
-          <label>Til og med <span>(om det varer fleire dagar)</span>
-            <input type="date" name="Til og med" />
-          </label>
-          <label>Klokka
-            <input name="Klokka" placeholder="t.d. 19-21" />
-          </label>
-          <label>Stad
-            <input name="Stad" placeholder="t.d. Honndalshallen" />
-          </label>
-          <label>Arrangør
-            <input name="Arrangør" />
-          </label>
-          <label>Lenkje <span>(t.d. til Facebook-arrangementet)</span>
-            <input name="Lenkje" inputmode="url" />
-          </label>
-          <label class="heil">Kort om arrangementet
-            <textarea name="Om arrangementet" rows="3"></textarea>
-          </label>
+          <p class="heil">
+            Fyll ut skjemaet, så kjem arrangementet i kalenderen når vi har sett
+            over det.
+          </p>
+          <a class="btn btn-primary btn-lg" href="https://docs.google.com/forms/d/e/1FAIpQLSeZQPkud5GXte7HjVoFW9W7JJkwTJsv6uywmdPIUYCGefof4g/viewform" target="_blank" rel="noopener noreferrer">Opne skjemaet</a>
           <p class="heil meld-inn-merk">
-            Skjemaet opnar e-posten din med alt ferdig utfylt, så sender du
-            sjølv. Skjer det ingenting, kan du ringje eller skrive til oss,
-            sjå under. Alt du skriv, kan bli publisert. Les meir i
+            Skjemaet ligg hos Google og spør ikkje etter namn eller
+            kontaktinformasjon. Alt du skriv, kan bli publisert. Les meir i
             <a href="personvern.html#arrangement">personvernerklæringa</a>.
           </p>
-          <button type="submit" class="btn btn-primary btn-lg">Send arrangementet</button>
-        </form>
+        </div>
         <div class="contact-grid">
           <div class="contact-card">
             <p class="contact-label">Ring eller skriv</p>
@@ -562,16 +541,6 @@
     // er fylt ut, eitt felt per linje.
     // ponytail: krev eit e-postprogram på eininga. Byt til eit eige mottak
     // (t.d. ein Cloudflare Worker) om folk ikkje får det til.
-    document.getElementById('meld-inn').addEventListener('submit', function (e) {
-      e.preventDefault();
-      var linjer = [];
-      new FormData(this).forEach(function (verdi, felt) {
-        if (verdi.trim()) linjer.push(felt + ': ' + verdi.trim());
-      });
-      location.href = 'mailto:anders.lodemel@hotmail.com?subject=' +
-        encodeURIComponent('Arrangement: ' + this.elements['Arrangement'].value.trim()) +
-        '&body=' + encodeURIComponent(linjer.join('\r\n'));
-    });
     (function () {
       var t = document.querySelector('.nav-toggle');
       var n = document.getElementById('hovudmeny');

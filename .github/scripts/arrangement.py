@@ -14,7 +14,7 @@ from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-CSV_URL = ""  # lenkja frå «Publiser på nettet» (CSV) kjem her
+CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVyQFnPn3_x2uQyMTJT3gDIXKXcwyqsAhTivai7eSof9nHmfKbia19B65vtoGeH_r-kGdjHuQGGjqT/pub?gid=1270189586&single=true&output=csv"  # fana «Publisert», publisert på nettet som CSV
 OSLO = ZoneInfo("Europe/Oslo")
 ROT = Path(__file__).resolve().parents[2]
 SIDE = "https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html"
