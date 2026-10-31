@@ -96,7 +96,7 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--blue-deep); text-decoration: none; }
 a:hover { color: var(--blue); }
-main p a:not(.btn) { text-decoration: underline; text-underline-offset: 2px; }
+main p a:not(.btn), .veke a { text-decoration: underline; text-underline-offset: 2px; }
 
 button { font: inherit; cursor: pointer; }
 
@@ -1397,6 +1397,7 @@ img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
 .veke-tid { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
 .veke strong { color: var(--ink); }
 #kvar-veke .cards + .facts-note { margin-top: 24px; }
+#kvar-veke .card:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .card .card-lenkje { margin-top: 14px; }
 
 /* Skjemakort: innmelding av arrangement og nyheitsbrevet. .heil går over heile breidda. */
