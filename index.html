@@ -585,6 +585,32 @@
       </div>
     </section>
 
+    <section id="nyheitsbrev" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Nyheitsbrev</p>
+          <h2>Få nytt frå oss på <span style="white-space: nowrap">e-post.</span></h2>
+          <p class="lede">
+            Meld deg på nyheitsbrevet, så får du vite kva vi jobbar med og kva
+            som skjer framover.
+          </p>
+        </div>
+        <form id="nyheitsbrev-skjema" class="meld-inn nyheitsbrev" method="post">
+          <label>E-postadressa di
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <button type="submit" class="btn btn-primary">Meld meg på</button>
+          <p class="heil nyheitsbrev-status" id="nyheitsbrev-status" role="status"></p>
+          <p class="heil meld-inn-merk" id="nyheitsbrev-samtykke">
+            Når du melder deg på, sender vi deg nyheitsbrevet på e-post og måler
+            om e-postane blir opna og kva lenkjer som blir klikka. Du kan melde
+            deg av med lenkja nedst i kvar e-post. Les meir i
+            <a href="personvern.html#nyheitsbrevet">personvernerklæringa</a>.
+          </p>
+        </form>
+      </div>
+    </section>
+
     <section id="kontakt" class="section section-contact">
       <div class="container">
         <div class="section-head">
@@ -639,6 +665,7 @@
         <li><a href="kva-skjer.html">Kva skjer</a></li>
         <li><a href="frivillig.html">Frivillig arbeid</a></li>
         <li><a href="smia.html">Smia</a></li>
+        <li><a href="#nyheitsbrev">Nyheitsbrev</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
         <li><a href="personvern.html">Personvern</a></li>
       </ul>
@@ -653,6 +680,39 @@
     // Notisen om det opne møtet forsvinn av seg sjølv etter 12. november.
     var notis = document.getElementById('notis-12nov');
     if (notis && new Date() >= new Date('2026-11-13')) notis.remove();
+    // Påmeldinga til nyheitsbrevet går rett til skjemaet i HubSpot. Sida lastar
+    // ikkje noko frå HubSpot, så ingen informasjonskapslar. Samtykketeksten er
+    // den same som står under feltet.
+    document.getElementById('nyheitsbrev-skjema').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var skjema = this;
+      var knapp = skjema.querySelector('button');
+      var status = document.getElementById('nyheitsbrev-status');
+      var samtykke = document.getElementById('nyheitsbrev-samtykke').textContent.replace(/\s+/g, ' ').trim();
+      knapp.disabled = true;
+      status.textContent = 'Sender …';
+      fetch('https://api-eu1.hsforms.com/submissions/v3/integration/submit/149669734/20b96a75-de49-42a4-a900-e7781d81a02e', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields: [{ objectTypeId: '0-1', name: 'email', value: skjema.elements.email.value.trim() }],
+          context: { pageUri: location.href, pageName: document.title },
+          legalConsentOptions: { consent: {
+            consentToProcess: true,
+            text: samtykke,
+            communications: [{ value: true, subscriptionTypeId: 4014800283, text: samtykke }]
+          } }
+        })
+      }).then(function (svar) {
+        if (!svar.ok) throw new Error(svar.status);
+        skjema.reset();
+        status.textContent = 'Takk! Du er påmeld nyheitsbrevet.';
+      }).catch(function () {
+        status.textContent = 'Det gjekk ikkje å melde deg på. Prøv igjen litt seinare, eller send oss ein e-post.';
+      }).finally(function () {
+        knapp.disabled = false;
+      });
+    });
     // Presentasjonen frå kommunestyret blir vist i ein modal. Utan JavaScript
     // opnar knappen PDF-en, og #presentasjon i adressa opnar modalen direkte.
     (function () {

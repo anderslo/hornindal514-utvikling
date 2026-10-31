@@ -1439,6 +1439,12 @@ img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
 .meld-inn-merk { margin: 0; color: var(--muted); font-size: 13.5px; }
 .meld-inn .btn { justify-self: start; }
 
+/* Nyheitsbrev: same skjemastil, med knappen ved sida av feltet (under kvarandre på mobil) */
+.nyheitsbrev { grid-template-columns: 1fr auto; max-width: 640px; margin-bottom: 0; }
+.nyheitsbrev .btn { min-height: 48px; }
+.nyheitsbrev-status { margin: 0; font-weight: 600; color: var(--ink); }
+.nyheitsbrev-status:empty { display: none; }
+
 @media (max-width: 700px) {
   .agenda li { grid-template-columns: 64px 1fr; gap: 14px; padding: 16px; }
   .agenda-dag { font-size: 22px; }

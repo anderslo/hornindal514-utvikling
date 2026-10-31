@@ -17,6 +17,7 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 ├── kalender.ics              # Kalenderen som folk kan abonnere på (same arrangement som på kva-skjer.html)
 ├── frivillig.html            # Lag og frivillig arbeid
 ├── smia.html                 # Smia
+├── personvern.html           # Personvernerklæring
 ├── styles.css                # All styling
 ├── README.md                 # Denne fila
 ├── assets/                   # Bilete og favikon
@@ -42,3 +43,12 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 CSV-adressa står i `CSV_URL` øvst i arrangement.py. Test utan nettverk med
 `python3 .github/scripts/arrangement.py --csv fil.csv`, og køyr sjølvtesten med
 `--sjekk`.
+
+## Nyheitsbrevet
+
+Påmeldinga på framsida (`#nyheitsbrev`) sender e-postadressa rett til skjemaet
+«Påmelding til nyheitsbrevet» i HubSpot-kontoen til Hornindal 514 Utvikling
+(portal 149669734, skjema `20b96a75-de49-42a4-a900-e7781d81a02e`), med samtykke
+til abonnementstypen «Nyheitsbrev». Sida lastar ikkje noko frå HubSpot og set
+ingen informasjonskapslar, slik personvernerklæringa lovar. Bruk difor ikkje
+HubSpot sitt innebygde skjema-skript.
