@@ -10,6 +10,17 @@ X-WR-TIMEZONE:Europe/Oslo
 REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
 BEGIN:VEVENT
+UID:barneidrett-turn-2026-11-08@hornindal514-utvikling
+DTSTAMP:20261031T210000Z
+DTSTART:20261108T174500Z
+DTEND:20261108T190000Z
+SUMMARY:Barneidrettsskulen: turn i Stryn
+LOCATION:Basishallen i Stryn
+DESCRIPTION:Oppmøte kl. 18.45\, og timen er kl. 19-20. For 1.-6. klasse\, 
+ og søsken kan vere med.
+URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+END:VEVENT
+BEGIN:VEVENT
 UID:omvising-kurator-2026-11-12@hornindal514-utvikling
 DTSTAMP:20261030T200000Z
 DTSTART:20261112T170000Z
@@ -37,6 +48,27 @@ SUMMARY:Ensemble NordLys: Peder Gald
 LOCATION:Hornindal kyrkje
 DESCRIPTION:Ei førestilling i ord\, bilete og tonar om lausungen frå Blak
  set som vart skipskommandør i Amerika.
+URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+END:VEVENT
+BEGIN:VEVENT
+UID:barneidrett-volleyball-2026-11-16@hornindal514-utvikling
+DTSTAMP:20261031T210000Z
+DTSTART:20261116T163000Z
+DTEND:20261116T183000Z
+SUMMARY:Barneidrettsskulen: volleyball
+LOCATION:Honndalshallen
+DESCRIPTION:1.-4. klasse kl. 17.30-18.30 og 5.-6. klasse kl. 18.30-19.30. S
+ øsken kan ikkje vere med.
+URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+END:VEVENT
+BEGIN:VEVENT
+UID:barneidrett-volleyball-2026-11-26@hornindal514-utvikling
+DTSTAMP:20261031T210000Z
+DTSTART:20261126T163000Z
+DTEND:20261126T173000Z
+SUMMARY:Barneidrettsskulen: volleyball
+LOCATION:Honndalshallen
+DESCRIPTION:For 1.-6. klasse. Søsken kan ikkje vere med.
 URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
