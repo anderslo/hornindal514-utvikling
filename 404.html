@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="nn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fann ikkje sida | Hornindal 514 Utvikling</title>
+  <meta name="theme-color" content="#0077C8" />
+
+  <!-- Absolutte stiar: GitHub Pages viser denne sida på alle adresser som ikkje finst, også djupt nede. -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="256x256" href="/assets/favicon-256.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
+
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#hovudinnhald">Hopp til hovudinnhald</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand"><img src="/assets/hornindal514-utvikling.svg" alt="Hornindal 514 Utvikling" width="179" height="48" /></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="hovudmeny" aria-label="Opne meny">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="hovudmeny" class="site-nav" aria-label="Hovudmeny">
+        <a href="/#om">Om oss</a>
+        <a href="/flytt-til-hornindal.html">Flytt hit</a>
+        <a href="/kva-skjer.html">Kva skjer</a>
+        <a href="/frivillig.html">Lag og foreiningar</a>
+        <a href="/smia.html">Kontor på Smia</a>
+        <a href="/bidra.html">Bidra</a>
+        <a href="/#kontakt" class="nav-cta">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="hovudinnhald">
+
+    <section class="hero hero-compact">
+      <picture class="hero-bg" aria-hidden="true">
+        <source media="(max-width: 700px)" srcset="/assets/hero-hornindalsvatnet-mobile.jpg" />
+        <img src="/assets/hero-hornindalsvatnet.jpg" alt="" loading="eager" fetchpriority="high" />
+      </picture>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <a href="/" class="page-back">← Til framsida</a>
+        <p class="eyebrow eyebrow-light">Hornindal 514 Utvikling</p>
+        <h1><span class="h1-line"><span class="accent">Fann ikkje sida</span></span></h1>
+        <p class="lede lede-light">Adressa kan vere skriven feil, eller sida er flytta. Menyen og lenkjene nedst på sida tek deg vidare.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="/assets/hornindal514-emblem.svg" alt="" width="64" height="64" />
+      <p class="footer-brand">Hornindal 514 Utvikling AS</p>
+      <p class="footer-tag">
+        Det gode liv i Hornindal, midt mellom Sunnmøre og Nordfjord.
+      </p>
+      <ul class="footer-nav">
+        <li><a href="/">Heim</a></li>
+        <li><a href="/flytt-til-hornindal.html">Flytt til Hornindal</a></li>
+        <li><a href="/kva-skjer.html">Kva skjer</a></li>
+        <li><a href="/frivillig.html">Lag og foreiningar</a></li>
+        <li><a href="/smia.html">Kontor på Smia</a></li>
+        <li><a href="/bidra.html">Bidra</a></li>
+        <li><a href="/#nyheitsbrev">Nyheitsbrev</a></li>
+        <li><a href="/#kontakt">Kontakt</a></li>
+        <li><a href="/personvern.html">Personvern</a></li>
+      </ul>
+      <p class="footer-meta">
+        © <span id="year">2026</span> Hornindal 514 Utvikling AS · Org.nr&nbsp;937&nbsp;809&nbsp;832
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function () {
+      var t = document.querySelector('.nav-toggle');
+      var n = document.getElementById('hovudmeny');
+      function setMeny(open) {
+        n.classList.toggle('open', open);
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        t.setAttribute('aria-label', open ? 'Lukk meny' : 'Opne meny');
+      }
+      if (t && n) {
+        t.addEventListener('click', function () { setMeny(!n.classList.contains('open')); });
+        n.addEventListener('click', function (e) { if (e.target.closest('a')) setMeny(false); });
+        n.addEventListener('focusout', function (e) {
+          if (!n.contains(e.relatedTarget) && e.relatedTarget !== t) setMeny(false);
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && n.classList.contains('open')) { setMeny(false); t.focus(); }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -19,6 +19,9 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 ├── smia.html                 # Smia
 ├── bidra.html                # Landingssida for QR-koden på flygebladet: ope møte og interesseskjema (HubSpot)
 ├── personvern.html           # Personvernerklæring
+├── 404.html                  # Visast når ei adresse ikkje finst (absolutte stiar)
+├── robots.txt                # Opnar for alle søkjemotorar og peikar til sitemap.xml
+├── sitemap.xml               # Sidene søkjemotorane skal finne: legg til nye sider her
 ├── styles.css                # All styling
 ├── README.md                 # Denne fila
 ├── assets/                   # Bilete og favikon

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://hornindal514.no/sitemap.xml
