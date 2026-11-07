@@ -22,6 +22,7 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 ├── 404.html                  # Visast når ei adresse ikkje finst (absolutte stiar)
 ├── robots.txt                # Opnar for alle søkjemotorar og peikar til sitemap.xml
 ├── sitemap.xml               # Sidene søkjemotorane skal finne: legg til nye sider her
+├── google6d3dcbdc4ba0cc22.html # Stadfestar eigarskapen i Google Search Console: må ikkje slettast
 ├── styles.css                # All styling
 ├── README.md                 # Denne fila
 ├── assets/                   # Bilete og favikon
