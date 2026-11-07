@@ -37,6 +37,7 @@
         <a href="kva-skjer.html">Kva skjer</a>
         <a href="frivillig.html">Lag og foreiningar</a>
         <a href="smia.html">Kontor på Smia</a>
+        <a href="bidra.html">Bidra</a>
         <a href="#kontakt" class="nav-cta">Kontakt</a>
       </nav>
     </div>
@@ -574,7 +575,7 @@
         <div class="callout">
           <h3>Slik skaffar vi pengane</h3>
           <ol class="steps">
-            <li><strong>Fleire med på laget.</strong> Seks bedrifter har allereie signert intensjonsavtale, og vi jobbar for å få med fleire bedrifter, lag, organisasjonar og privatpersonar. På det opne møtet på Smia 12.&nbsp;november kan du høyre korleis du kan bidra.</li>
+            <li><strong>Fleire med på laget.</strong> Seks bedrifter har allereie signert intensjonsavtale, og vi jobbar for å få med fleire bedrifter, lag, organisasjonar og privatpersonar. <a href="bidra.html">Sjå korleis du kan bidra.</a></li>
             <li><strong>Kraftfondet.</strong> Saman med HoppID, Volda Næringsforum og kommunen finn vi ut korleis vi skal søkje. Søknadsfristen er venta i februar 2027.</li>
             <li><strong>Bankar og stiftingar.</strong> Vi startar dialogen med Sparebankstiftinga Sogn og Fjordane, som har søknadsfrist 1.&nbsp;mars 2027.</li>
           </ol>
@@ -679,6 +680,7 @@
         <li><a href="kva-skjer.html">Kva skjer</a></li>
         <li><a href="frivillig.html">Lag og foreiningar</a></li>
         <li><a href="smia.html">Kontor på Smia</a></li>
+        <li><a href="bidra.html">Bidra</a></li>
         <li><a href="#nyheitsbrev">Nyheitsbrev</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
         <li><a href="personvern.html">Personvern</a></li>
@@ -691,9 +693,18 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Notisen om det opne møtet forsvinn av seg sjølv etter 12. november.
-    var notis = document.getElementById('notis-12nov');
-    if (notis && new Date() >= new Date('2026-11-13')) notis.remove();
+    // Etter 12. november forsvinn notisen om det opne møtet, og i kalenderen
+    // blir møtet ståande som gjort, utan «Neste», teksten og kalenderknappen.
+    if (new Date() >= new Date('2026-11-13')) {
+      var notis = document.getElementById('notis-12nov');
+      if (notis) notis.remove();
+      var mote = document.querySelector('.timeline .kjem');
+      if (mote) {
+        mote.classList.remove('kjem');
+        mote.querySelector('h3').textContent = 'Ope møte på Smia';
+        mote.querySelectorAll('div > p, div > .btn').forEach(function (el) { el.remove(); });
+      }
+    }
     // Påmeldinga til nyheitsbrevet går rett til skjemaet i HubSpot. Sida lastar
     // ikkje noko frå HubSpot, så ingen informasjonskapslar. Samtykketeksten er
     // den same som står under feltet.

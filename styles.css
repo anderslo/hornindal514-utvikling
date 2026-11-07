@@ -96,7 +96,7 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--blue-deep); text-decoration: none; }
 a:hover { color: var(--blue); }
-main p a:not(.btn), .veke a { text-decoration: underline; text-underline-offset: 2px; }
+main p a:not(.btn), .veke a, .steps a { text-decoration: underline; text-underline-offset: 2px; }
 
 button { font: inherit; cursor: pointer; }
 
@@ -915,6 +915,9 @@ button { font: inherit; cursor: pointer; }
   padding: 116px 0 72px;
 }
 .hero.hero-compact .hero-inner { max-width: 780px; }
+@media (max-width: 700px) {
+  .hero.hero-compact { padding: 32px 0 48px; }
+}
 
 /* «Tilbake»-lenke øvst i hero */
 .page-back {
@@ -991,6 +994,8 @@ button { font: inherit; cursor: pointer; }
 .callout p:last-child { margin-bottom: 0; }
 .callout--warm { background: var(--paper-warm); border-color: rgba(242, 169, 59, 0.3); }
 .callout .steps { margin: 4px 0 18px; }
+.callout > :last-child { margin-bottom: 0; }
+.prose + .partners { margin-top: 16px; }
 .bustad-tun { margin-top: 48px; }
 .trening { margin-top: 20px; }
 .bustad-tun p, .trening p { max-width: 760px; }
@@ -1141,8 +1146,9 @@ button { font: inherit; cursor: pointer; }
   .cards-3 { grid-template-columns: 1fr; }
 }
 
-/* Mobilmeny ≤900px (hamburger erstattar full meny) */
-@media (max-width: 900px) {
+/* Mobilmeny ≤1023px (hamburger erstattar full meny). Med sju punkt får
+   menyen ikkje plass på éi linje under om lag 990 px. */
+@media (max-width: 1023px) {
   .nav-toggle { display: flex; }
   .site-nav {
     position: absolute;
