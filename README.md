@@ -17,6 +17,7 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 ├── kalender.ics              # Kalenderen som folk kan abonnere på (same arrangement som på kva-skjer.html)
 ├── frivillig.html            # Lag og frivillig arbeid
 ├── smia.html                 # Smia
+├── bidra.html                # Landingssida for QR-koden på flygebladet: ope møte og interesseskjema (HubSpot)
 ├── personvern.html           # Personvernerklæring
 ├── styles.css                # All styling
 ├── README.md                 # Denne fila

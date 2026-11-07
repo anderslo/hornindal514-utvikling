@@ -1417,7 +1417,8 @@ img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
 .meld-inn p { margin: 0; }
 .meld-inn .heil { grid-column: 1 / -1; }
 .meld-inn label { font-size: 14.5px; font-weight: 600; color: var(--ink); }
-.meld-inn input {
+.meld-inn input,
+.meld-inn textarea {
   display: block;
   width: 100%;
   margin-top: 6px;
@@ -1431,7 +1432,13 @@ img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
   font-size: 16px;
   font-weight: 400;
 }
-.meld-inn input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+.meld-inn input:focus,
+.meld-inn textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+.meld-inn textarea { min-height: 120px; resize: vertical; }
+.meld-inn .valfri { color: var(--muted); font-weight: 400; }
+/* Avkryssing: boksen til venstre for teksten, ikkje som eit tekstfelt */
+.meld-inn .avkryss { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; cursor: pointer; }
+.meld-inn .avkryss input { display: inline-block; flex: none; width: 20px; height: 20px; min-height: 0; margin: 1px 0 0; padding: 0; accent-color: var(--blue); }
 .meld-inn-merk { color: var(--muted); font-size: 13.5px; }
 .meld-inn .btn { justify-self: start; }
 
