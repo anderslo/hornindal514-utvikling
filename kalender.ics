@@ -5,7 +5,7 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Kva skjer i Hornindal
 X-WR-CALDESC:Arrangement i Hornindal\, samla av Hornindal 514 Utvikling. ht
- tps://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+ tps://hornindal514.no/kva-skjer.html
 X-WR-TIMEZONE:Europe/Oslo
 REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
@@ -18,7 +18,7 @@ SUMMARY:Barneidrettsskulen: turn i Stryn
 LOCATION:Basishallen i Stryn
 DESCRIPTION:Oppmøte kl. 18.45\, og timen er kl. 19-20. For 1.-6. klasse\, 
  og søsken kan vere med.
-URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
 UID:omvising-kurator-2026-11-12@hornindal514-utvikling
@@ -38,7 +38,7 @@ SUMMARY:Ope møte med Hornindal 514 Utvikling
 LOCATION:Smia\, Ytrehornsvegen 8\, 6763 Hornindal
 DESCRIPTION:Kom og høyr korleis du kan bidra\, anten du er bedrift\, lag\,
   organisasjon eller privatperson.
-URL:https://anderslo.github.io/hornindal514-utvikling/
+URL:https://hornindal514.no/
 END:VEVENT
 BEGIN:VEVENT
 UID:peder-gald-2026-11-15@hornindal514-utvikling
@@ -48,7 +48,7 @@ SUMMARY:Ensemble NordLys: Peder Gald
 LOCATION:Hornindal kyrkje
 DESCRIPTION:Ei førestilling i ord\, bilete og tonar om lausungen frå Blak
  set som vart skipskommandør i Amerika.
-URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
 UID:barneidrett-volleyball-2026-11-16@hornindal514-utvikling
@@ -59,7 +59,7 @@ SUMMARY:Barneidrettsskulen: volleyball
 LOCATION:Honndalshallen
 DESCRIPTION:1.-4. klasse kl. 17.30-18.30 og 5.-6. klasse kl. 18.30-19.30. S
  øsken kan ikkje vere med.
-URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
 UID:barneidrett-volleyball-2026-11-26@hornindal514-utvikling
@@ -69,7 +69,7 @@ DTEND:20261126T173000Z
 SUMMARY:Barneidrettsskulen: volleyball
 LOCATION:Honndalshallen
 DESCRIPTION:For 1.-6. klasse. Søsken kan ikkje vere med.
-URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
 UID:lutefiskaften-2026-11-27@hornindal514-utvikling
@@ -78,7 +78,7 @@ DTSTART:20261127T180000Z
 SUMMARY:Tradisjonell lutefiskaften
 LOCATION:Havila Hotel Raftevold
 DESCRIPTION:Med Kokkekompisene.
-URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
 UID:korpsbasar-2026-11-29@hornindal514-utvikling
@@ -97,7 +97,7 @@ DTEND:20261206T140000Z
 SUMMARY:Julemarknad på Dølheim
 LOCATION:Dølheim\, Hornindal
 DESCRIPTION:Hornindal Ungdomslag inviterer til stand\, loddsal og kafé.
-URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
 UID:lysmesse-2026-12-06@hornindal514-utvikling
@@ -123,7 +123,7 @@ DTEND;VALUE=DATE:20270518
 SUMMARY:17. mai i Hornindal
 LOCATION:Grodås
 DESCRIPTION:Barnetog\, gudsteneste og program i Honndalshallen.
-URL:https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html
+URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
 UID:hornindal-rundt-2027@hornindal514-utvikling

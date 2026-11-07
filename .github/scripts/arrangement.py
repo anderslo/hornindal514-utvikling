@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVyQFnPn3_x2uQyMTJT3gDIXKXcwyqsAhTivai7eSof9nHmfKbia19B65vtoGeH_r-kGdjHuQGGjqT/pub?gid=1270189586&single=true&output=csv"  # fana «Publisert», publisert på nettet som CSV
 OSLO = ZoneInfo("Europe/Oslo")
 ROT = Path(__file__).resolve().parents[2]
-SIDE = "https://anderslo.github.io/hornindal514-utvikling/kva-skjer.html"
+SIDE = "https://hornindal514.no/kva-skjer.html"
 FELT = "id tittel dato til start slutt stad arrangor lenkje omtale regel".split()
 START, SLUTT = "        <!-- kalender:start -->", "        <!-- kalender:slutt -->"
 VEKEDAG = "må. ty. on. to. fr. la. sø.".split()

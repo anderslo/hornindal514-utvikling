@@ -8,7 +8,7 @@
 // kolonnene seg, og då må formelen i «Publisert» rettast.
 function lagSkjema() {
   var skjema = FormApp.create('Meld inn eit arrangement')
-    .setDescription('Arrangement i Hornindal til kalenderen på Kva skjer-sida til Hornindal 514 Utvikling. Vi ser over alt før det kjem i kalenderen. Alt du skriv, kan bli publisert. Personvern: https://anderslo.github.io/hornindal514-utvikling/personvern.html#arrangement')
+    .setDescription('Arrangement i Hornindal til kalenderen på Kva skjer-sida til Hornindal 514 Utvikling. Vi ser over alt før det kjem i kalenderen. Alt du skriv, kan bli publisert. Personvern: https://hornindal514.no/personvern.html#arrangement')
     .setConfirmationMessage('Takk! Arrangementet kjem i kalenderen når vi har sett over det.')
     .setCollectEmail(false)
     .setProgressBar(false);

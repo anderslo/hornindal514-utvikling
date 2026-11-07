@@ -2,7 +2,7 @@
 
 Enkel statisk nettstad for Hornindal 514 Utvikling AS.
 
-**Live på:** https://anderslo.github.io/hornindal514-utvikling/
+**Live på:** https://hornindal514.no/
 
 Sida er bygd med vanleg HTML og CSS, utan byggeprosess eller
 JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
