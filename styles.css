@@ -1463,3 +1463,7 @@ img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
   .snarvegar .card { gap: 2px; padding: 16px 18px 14px; }
   .snarvegar strong { font-size: 17px; }
 }
+
+/* Reisetidskartet på Flytt hit */
+.kart { margin: 32px 0 0; max-width: 560px; }
+.kart img { width: 100%; border: 1px solid var(--line); border-radius: var(--radius); }
