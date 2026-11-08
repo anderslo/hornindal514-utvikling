@@ -45,7 +45,9 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
   redigerast for hand. Rett i reknearket i staden. Handskrivne arrangement
   innanfor markørane blir ikkje rørte. Når eit arrangement blir godkjent eller
   retta i arket, startar arket jobben med ein gong (oppsettet står i
-  lag-skjema.gs), og arrangementet er ute etter om lag fem minutt.
+  lag-skjema.gs), og arrangementet er ute etter om lag fem minutt. Det
+  valfrie e-postfeltet blir aldri publisert, og adressa blir sletta dagen
+  etter at arrangementet er over.
 
 CSV-adressa står i `CSV_URL` øvst i arrangement.py. Test utan nettverk med
 `python3 .github/scripts/arrangement.py --csv fil.csv`, og køyr sjølvtesten med

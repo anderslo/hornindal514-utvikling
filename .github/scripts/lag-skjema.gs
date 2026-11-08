@@ -63,14 +63,15 @@ function lagSkjema() {
 // (id-en til reknearket), GITHUB_TOKEN (fine-grained token med tilgang berre
 // til hornindal514-utvikling og «Actions: Read and write») og SLACK_WEBHOOK
 // (Incoming Webhook-adressa), og køyr startAutoPublisering. Køyr han på nytt
-// når ein av dei er bytt.
+// når ein av dei er bytt. Det valfrie e-postfeltet kjem med leggTilEpost.
 function startAutoPublisering() {
   ScriptApp.getProjectTriggers().forEach(function (t) {
-    if (['vedEndring', 'vedInnsending'].indexOf(t.getHandlerFunction()) >= 0) ScriptApp.deleteTrigger(t);
+    if (['vedEndring', 'vedInnsending', 'ryddEpost'].indexOf(t.getHandlerFunction()) >= 0) ScriptApp.deleteTrigger(t);
   });
   var arkId = PropertiesService.getScriptProperties().getProperty('ARK_ID');
   ScriptApp.newTrigger('vedEndring').forSpreadsheet(arkId).onEdit().create();
   ScriptApp.newTrigger('vedInnsending').forSpreadsheet(arkId).onFormSubmit().create();
+  ScriptApp.newTrigger('ryddEpost').timeBased().everyDays(1).atHour(3).create();
   publiser(); // prøver GitHub-nøkkelen med ein gong
   varsle('Varsel om nye arrangement er slått på.'); // og Slack-adressa
   Logger.log('Klart. Godkjende arrangement går ut med ein gong, og nye kjem som varsel i Slack.');
@@ -79,9 +80,9 @@ function startAutoPublisering() {
 function vedEndring(e) {
   var r = e.range, ark = r.getSheet();
   if (!ark.getFormUrl() || r.getLastRow() < 2) return; // berre svara, ikkje overskrifta eller «Publisert»
-  var fra = Math.max(r.getRow(), 2);
-  var endraGodkjent = r.getColumn() <= 12 && r.getLastColumn() >= 12; // L er Godkjent
-  var godkjendRad = ark.getRange(fra, 12, r.getLastRow() - fra + 1, 1).getValues()
+  var g = kolonne(ark, 'Godkjent'), fra = Math.max(r.getRow(), 2);
+  var endraGodkjent = r.getColumn() <= g && r.getLastColumn() >= g;
+  var godkjendRad = ark.getRange(fra, g, r.getLastRow() - fra + 1, 1).getValues()
     .some(function (v) { return v[0] === true; });
   if (endraGodkjent || godkjendRad) publiser();
 }
@@ -101,12 +102,14 @@ function publiser() {
   if (kode < 200 || kode > 299) throw new Error('GitHub svarte ' + kode + ': ' + svar.getContentText());
 }
 
-// Berre tittel, dato og stad går til Slack. Resten står i arket.
+// Berre tittel, dato og stad går til Slack, aldri e-postadressa. Resten står i arket.
 function vedInnsending(e) {
   var v = e.values, ark = e.range.getSheet(); // B tittel, C dato, G stad
-  var lenkje = ark.getParent().getUrl() + '#gid=' + ark.getSheetId() + '&range=L' + e.range.getRow();
+  var lenkje = ark.getParent().getUrl() + '#gid=' + ark.getSheetId() + '&range=' +
+    bokstav(kolonne(ark, 'Godkjent')) + e.range.getRow();
+  var epost = (e.namedValues['E-post'] || [''])[0] ? ' (vil ha beskjed på e-post)' : '';
   varsle('Nytt arrangement til godkjenning: *' + slack(v[1]) + '*, ' + slack(v[2]) +
-    (v[6] ? ', ' + slack(v[6]) : '') + '\n<' + lenkje + '|Opne arket og kryss av i «Godkjent»>');
+    (v[6] ? ', ' + slack(v[6]) : '') + epost + '\n<' + lenkje + '|Opne arket og kryss av i «Godkjent»>');
 }
 
 function varsle(tekst) {
@@ -122,4 +125,67 @@ function varsle(tekst) {
 // Innsend tekst skal ikkje kunne lage lenkjer eller varsle heile kanalen.
 function slack(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Legg til det valfrie e-postfeltet, så vi kan gi innsendaren beskjed når
+// arrangementet er ute. Køyr éin gong. Eit nytt spørsmål kan flytte
+// «Godkjent» ei kolonne til høgre, og då ville den gamle formelen i
+// «Publisert» gitt ei tom liste og tømt kalenderen. Difor blir formelen først
+// skriven om med HSTACK og Col-namn, så han følgjer med når kolonnene flyttar
+// seg, og lista blir kontrollert før og etter.
+function leggTilEpost() {
+  var ark = SpreadsheetApp.openById(PropertiesService.getScriptProperties().getProperty('ARK_ID'));
+  var svar = svararket(ark), pub = ark.getSheetByName('Publisert'), a1 = pub.getRange('A1');
+  var liste = function () { SpreadsheetApp.flush(); return JSON.stringify(pub.getDataRange().getDisplayValues()); };
+  var opphavleg = liste(), gammal = a1.getFormula(), n = "'" + svar.getName() + "'!", g = bokstav(kolonne(svar, 'Godkjent'));
+  a1.setFormula('=QUERY(HSTACK(' + n + 'A:K; ' + n + g + ':' + g + '); "' +
+    'select Col1, Col2, Col3, Col4, Col5, Col6, Col7, Col8, Col9, Col10, Col11 where Col12 = true order by Col3 ' +
+    "label Col1 'id', Col2 'tittel', Col3 'dato', Col4 'til', Col5 'start', Col6 'slutt', Col7 'stad', Col8 'arrangor', Col9 'lenkje', Col10 'omtale', Col11 'regel' " +
+    "format Col1 'yyyy-mm-dd hh:mm:ss', Col3 'yyyy-mm-dd', Col4 'yyyy-mm-dd', Col5 'hh:mm', Col6 'hh:mm'\"; 1)");
+  if (liste() !== opphavleg) {
+    a1.setFormula(gammal);
+    throw new Error('Den nye formelen gav ei anna liste, så den gamle er sett tilbake. Ingenting anna er endra.');
+  }
+  var skjema = FormApp.openByUrl(svar.getFormUrl());
+  if (!skjema.getItems().some(function (i) { return i.getTitle() === 'E-post'; })) {
+    skjema.addTextItem().setTitle('E-post')
+      .setHelpText('Valfritt. Då gir vi deg beskjed når arrangementet er på nettsida. Adressa blir ikkje publisert, og vi slettar ho når arrangementet er over.')
+      .setValidation(FormApp.createTextValidation().requireTextIsEmail().build());
+    var d = skjema.getDescription(), ny = d.replace('Alt du skriv, kan bli publisert.', 'Alt du skriv, unntatt e-postadressa, kan bli publisert.');
+    if (ny === d) Logger.log('Fann ikkje «Alt du skriv, kan bli publisert.» i skildringa til skjemaet. Rett ho for hand.');
+    skjema.setDescription(ny);
+  }
+  Utilities.sleep(3000);
+  if (liste() !== opphavleg) throw new Error('Lista i «Publisert» endra seg då e-postfeltet kom inn. Sjekk formelen i A1 før nokon godkjenner meir.');
+  Logger.log('E-postfeltet er i kolonne ' + bokstav(kolonne(svar, 'E-post')) + ', og Godkjent er i ' + bokstav(kolonne(svar, 'Godkjent')) + '.');
+  startAutoPublisering(); // tek med den daglege slettinga av e-postadresser
+}
+
+// Slettar e-postadressa dagen etter at arrangementet er over (dagleg trigger).
+function ryddEpost() {
+  var svar = svararket(SpreadsheetApp.openById(PropertiesService.getScriptProperties().getProperty('ARK_ID')));
+  var k = kolonne(svar, 'E-post'), n = svar.getLastRow() - 1;
+  if (!k || n < 1) return;
+  var datoar = svar.getRange(2, 3, n, 2).getValues(); // C dato, D til
+  var epost = svar.getRange(2, k, n, 1).getValues(), idag = new Date(), endra = false;
+  idag.setHours(0, 0, 0, 0);
+  epost.forEach(function (rad, i) {
+    var siste = datoar[i][1] || datoar[i][0];
+    if (rad[0] && siste instanceof Date && siste < idag) { rad[0] = ''; endra = true; }
+  });
+  if (endra) svar.getRange(2, k, n, 1).setValues(epost);
+}
+
+function svararket(ark) {
+  return ark.getSheets().filter(function (s) { return s.getFormUrl(); })[0];
+}
+
+// Kolonnenummeret (1, 2, ...) til ei overskrift i rad 1, eller 0 om ho ikkje finst.
+function kolonne(ark, namn) {
+  return ark.getRange(1, 1, 1, ark.getLastColumn()).getValues()[0].indexOf(namn) + 1;
+}
+
+// shortcut: berre A-Z, held så lenge arket har under 27 kolonner.
+function bokstav(n) {
+  return n ? String.fromCharCode(64 + n) : '?';
 }
