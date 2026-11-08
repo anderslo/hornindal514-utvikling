@@ -159,6 +159,17 @@ DESCRIPTION:Kvart år: første helga i august. Datoen er rekna ut frå tidl
 URL:https://www.facebook.com/Kulturdaganeihornindal/
 END:VEVENT
 BEGIN:VEVENT
+UID:hornindalsrokken-skyrace-2027@hornindal514-utvikling
+DTSTAMP:20261108T195742Z
+DTSTART;VALUE=DATE:20270821
+DTEND;VALUE=DATE:20270822
+SUMMARY:Hornindalsrokken Skyrace
+LOCATION:Horndøla bru\, Hornindal
+DESCRIPTION:Krevjande og teknisk fjelløp over Hornindalsrokken\, 17\,5 km 
+ og 1 300 høgdemeter frå Horndøla bru til Trondstad grendahus.
+URL:https://hornindalsrokkenskyrace.com/
+END:VEVENT
+BEGIN:VEVENT
 UID:kornolfestival-2027@hornindal514-utvikling
 DTSTAMP:20261030T200000Z
 DTSTART;VALUE=DATE:20271007
