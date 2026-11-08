@@ -29,9 +29,9 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 └── .github/
     ├── scripts/
     │   ├── arrangement.py    # Legg godkjende arrangement frå skjemaet inn i kalenderen (berre standardbiblioteket)
-    │   └── lag-skjema.gs     # Lagar Google-skjemaet og reknearket (køyrast ein gong på script.google.com)
+    │   └── lag-skjema.gs     # Lagar Google-skjemaet og reknearket, og startar jobben når noko blir godkjent (script.google.com)
     └── workflows/
-        └── arrangement.yml   # Køyrer arrangement.py kvar time og pushar om noko har endra seg
+        └── arrangement.yml   # Køyrer arrangement.py kvar time og når arket startar han, og pushar om noko har endra seg
 ```
 
 ## Kalenderen har to kjelder
@@ -43,7 +43,9 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
   `kalender:slutt` i `kva-skjer.html` (merkte `data-skjema`) og i
   `kalender.ics` (`UID:skjema-`). Skriptet eig desse, så dei skal ikkje
   redigerast for hand. Rett i reknearket i staden. Handskrivne arrangement
-  innanfor markørane blir ikkje rørte.
+  innanfor markørane blir ikkje rørte. Når eit arrangement blir godkjent eller
+  retta i arket, startar arket jobben med ein gong (oppsettet står i
+  lag-skjema.gs), og arrangementet er ute etter om lag fem minutt.
 
 CSV-adressa står i `CSV_URL` øvst i arrangement.py. Test utan nettverk med
 `python3 .github/scripts/arrangement.py --csv fil.csv`, og køyr sjølvtesten med

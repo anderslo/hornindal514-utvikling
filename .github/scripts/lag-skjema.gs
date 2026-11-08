@@ -52,3 +52,47 @@ function lagSkjema() {
   Logger.log('Redigere skjemaet: ' + skjema.getEditUrl());
   Logger.log('Reknearket: ' + ark.getUrl());
 }
+
+// Godkjende arrangement går ut med ein gong: når «Godkjent» blir kryssa av
+// eller fjerna, eller ein godkjend rad blir endra, startar arket
+// arrangementsjobben på GitHub. Jobben ventar sjølv til den publiserte lista
+// har fått endringa. Timesjobben går som før om dette feilar.
+//
+// Oppsett éin gong i dette prosjektet: legg inn skripteigenskapane ARK_ID
+// (id-en til reknearket) og GITHUB_TOKEN (fine-grained token med tilgang
+// berre til hornindal514-utvikling og «Actions: Read and write»), og køyr
+// startAutoPublisering. Køyr han på nytt når tokenet er bytt.
+function startAutoPublisering() {
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === 'vedEndring') ScriptApp.deleteTrigger(t);
+  });
+  var arkId = PropertiesService.getScriptProperties().getProperty('ARK_ID');
+  ScriptApp.newTrigger('vedEndring').forSpreadsheet(arkId).onEdit().create();
+  publiser(); // prøver tokenet med ein gong
+  Logger.log('Klart. Godkjende arrangement går no ut med ein gong.');
+}
+
+function vedEndring(e) {
+  var r = e.range, ark = r.getSheet();
+  if (!ark.getFormUrl() || r.getLastRow() < 2) return; // berre svara, ikkje overskrifta eller «Publisert»
+  var fra = Math.max(r.getRow(), 2);
+  var endraGodkjent = r.getColumn() <= 12 && r.getLastColumn() >= 12; // L er Godkjent
+  var godkjendRad = ark.getRange(fra, 12, r.getLastRow() - fra + 1, 1).getValues()
+    .some(function (v) { return v[0] === true; });
+  if (endraGodkjent || godkjendRad) publiser();
+}
+
+function publiser() {
+  var svar = UrlFetchApp.fetch('https://api.github.com/repos/anderslo/hornindal514-utvikling/actions/workflows/arrangement.yml/dispatches', {
+    method: 'post',
+    contentType: 'application/json',
+    headers: {
+      Authorization: 'Bearer ' + PropertiesService.getScriptProperties().getProperty('GITHUB_TOKEN'),
+      Accept: 'application/vnd.github+json'
+    },
+    payload: JSON.stringify({ ref: 'main' }),
+    muteHttpExceptions: true
+  });
+  var kode = svar.getResponseCode();
+  if (kode < 200 || kode > 299) throw new Error('GitHub svarte ' + kode + ': ' + svar.getContentText());
+}

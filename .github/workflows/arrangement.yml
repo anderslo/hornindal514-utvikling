@@ -16,8 +16,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main  # nyaste main, ikkje commiten frå då køyringa vart sett i kø
       - name: Hent godkjende arrangement
-        run: python3 .github/scripts/arrangement.py
+        run: |
+          python3 .github/scripts/arrangement.py
+          # Starta frå arket (sjå lag-skjema.gs) eller for hand: den publiserte
+          # lista heng nokre minutt etter, så prøv på nytt i inntil 10 minutt.
+          if [ "${{ github.event_name }}" = workflow_dispatch ]; then
+            for i in $(seq 40); do
+              [ -n "$(git status --porcelain)" ] && break
+              sleep 15
+              python3 .github/scripts/arrangement.py
+            done
+          fi
       - name: Commit og push om noko har endra seg
         env:
           GH_TOKEN: ${{ github.token }}
