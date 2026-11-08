@@ -169,15 +169,6 @@ DESCRIPTION:Kvart år: torsdag-søndag i veke 40.
 URL:https://norskkornolfestival.no/
 END:VEVENT
 BEGIN:VEVENT
-UID:skjema-20261108T182730@hornindal514-utvikling
-DTSTAMP:20261108T172730Z
-DTSTART:20261127T123700Z
-SUMMARY:Test
-LOCATION:Heime
-DESCRIPTION:asdfasdfasdfasdfasdf\nKvart år: nope\nArrangør: Anders
-URL:https://hornindal514.no/kva-skjer.html
-END:VEVENT
-BEGIN:VEVENT
 UID:skjema-20261108T173404@hornindal514-utvikling
 DTSTAMP:20261108T163404Z
 DTSTART:20271015T180000Z
