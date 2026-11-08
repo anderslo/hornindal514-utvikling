@@ -168,4 +168,16 @@ LOCATION:Honndalshallen\, Hornindal
 DESCRIPTION:Kvart år: torsdag-søndag i veke 40.
 URL:https://norskkornolfestival.no/
 END:VEVENT
+BEGIN:VEVENT
+UID:skjema-20261108T173404@hornindal514-utvikling
+DTSTAMP:20261108T163404Z
+DTSTART:20271015T180000Z
+DTEND:20271017T000000Z
+SUMMARY:Haustsprell
+LOCATION:Havila Hotel Raftevold
+DESCRIPTION:Gamaldans på hotellet fredag og laurdag\nKonsert laurdag kl 17
+ \nKvart år: Tredje helga i oktober\nArrangør: Hornindal Trekkspel og Tor
+ adarlag
+URL:https://hornindal514.no/kva-skjer.html
+END:VEVENT
 END:VCALENDAR
