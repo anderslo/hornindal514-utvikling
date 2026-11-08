@@ -29,7 +29,7 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 └── .github/
     ├── scripts/
     │   ├── arrangement.py    # Legg godkjende arrangement frå skjemaet inn i kalenderen (berre standardbiblioteket)
-    │   └── lag-skjema.gs     # Lagar Google-skjemaet og reknearket, og startar jobben når noko blir godkjent (script.google.com)
+    │   └── lag-skjema.gs     # Lagar Google-skjemaet og reknearket, startar jobben når noko blir godkjent og varslar i Slack om nye (script.google.com)
     └── workflows/
         └── arrangement.yml   # Køyrer arrangement.py kvar time og når arket startar han, og pushar om noko har endra seg
 ```

@@ -56,20 +56,24 @@ function lagSkjema() {
 // Godkjende arrangement går ut med ein gong: når «Godkjent» blir kryssa av
 // eller fjerna, eller ein godkjend rad blir endra, startar arket
 // arrangementsjobben på GitHub. Jobben ventar sjølv til den publiserte lista
-// har fått endringa. Timesjobben går som før om dette feilar.
+// har fått endringa. Timesjobben går som før om dette feilar. Når nokon
+// melder inn eit arrangement, kjem det eit varsel i Slack.
 //
 // Oppsett éin gong i dette prosjektet: legg inn skripteigenskapane ARK_ID
-// (id-en til reknearket) og GITHUB_TOKEN (fine-grained token med tilgang
-// berre til hornindal514-utvikling og «Actions: Read and write»), og køyr
-// startAutoPublisering. Køyr han på nytt når tokenet er bytt.
+// (id-en til reknearket), GITHUB_TOKEN (fine-grained token med tilgang berre
+// til hornindal514-utvikling og «Actions: Read and write») og SLACK_WEBHOOK
+// (Incoming Webhook-adressa), og køyr startAutoPublisering. Køyr han på nytt
+// når ein av dei er bytt.
 function startAutoPublisering() {
   ScriptApp.getProjectTriggers().forEach(function (t) {
-    if (t.getHandlerFunction() === 'vedEndring') ScriptApp.deleteTrigger(t);
+    if (['vedEndring', 'vedInnsending'].indexOf(t.getHandlerFunction()) >= 0) ScriptApp.deleteTrigger(t);
   });
   var arkId = PropertiesService.getScriptProperties().getProperty('ARK_ID');
   ScriptApp.newTrigger('vedEndring').forSpreadsheet(arkId).onEdit().create();
-  publiser(); // prøver tokenet med ein gong
-  Logger.log('Klart. Godkjende arrangement går no ut med ein gong.');
+  ScriptApp.newTrigger('vedInnsending').forSpreadsheet(arkId).onFormSubmit().create();
+  publiser(); // prøver GitHub-nøkkelen med ein gong
+  varsle('Varsel om nye arrangement er slått på.'); // og Slack-adressa
+  Logger.log('Klart. Godkjende arrangement går ut med ein gong, og nye kjem som varsel i Slack.');
 }
 
 function vedEndring(e) {
@@ -95,4 +99,27 @@ function publiser() {
   });
   var kode = svar.getResponseCode();
   if (kode < 200 || kode > 299) throw new Error('GitHub svarte ' + kode + ': ' + svar.getContentText());
+}
+
+// Berre tittel, dato og stad går til Slack. Resten står i arket.
+function vedInnsending(e) {
+  var v = e.values, ark = e.range.getSheet(); // B tittel, C dato, G stad
+  var lenkje = ark.getParent().getUrl() + '#gid=' + ark.getSheetId() + '&range=L' + e.range.getRow();
+  varsle('Nytt arrangement til godkjenning: *' + slack(v[1]) + '*, ' + slack(v[2]) +
+    (v[6] ? ', ' + slack(v[6]) : '') + '\n<' + lenkje + '|Opne arket og kryss av i «Godkjent»>');
+}
+
+function varsle(tekst) {
+  var svar = UrlFetchApp.fetch(PropertiesService.getScriptProperties().getProperty('SLACK_WEBHOOK'), {
+    method: 'post',
+    contentType: 'application/json',
+    payload: JSON.stringify({ text: tekst }),
+    muteHttpExceptions: true
+  });
+  if (svar.getResponseCode() !== 200) throw new Error('Slack svarte ' + svar.getResponseCode() + ': ' + svar.getContentText());
+}
+
+// Innsend tekst skal ikkje kunne lage lenkjer eller varsle heile kanalen.
+function slack(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
