@@ -62,6 +62,18 @@ DESCRIPTION:1.-4. klasse kl. 17.30-18.30 og 5.-6. klasse kl. 18.30-19.30. S
 URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
+UID:skisenteret-dugnad-kickoff-2026-11-23@hornindal514-utvikling
+DTSTAMP:20261112T174526Z
+DTSTART:20261123T180000Z
+SUMMARY:Kick-off for dugnadsgjengen i skisenteret
+LOCATION:Varmestova\, Hornindal Skisenter\, Holebakkane 206\, 6763 Horninda
+ l
+DESCRIPTION:Både nye og erfarne er velkomne\, også om du berre vil høyre
+  meir. Vaktene gir dags- eller sesongkort\, og du kan òg vere med på Tea
+ ms.
+URL:https://www.facebook.com/events/2144711749455782/
+END:VEVENT
+BEGIN:VEVENT
 UID:barneidrett-volleyball-2026-11-26@hornindal514-utvikling
 DTSTAMP:20261031T210000Z
 DTSTART:20261126T163000Z
