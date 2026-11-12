@@ -210,11 +210,10 @@
           <h2>Vil du støtte arbeidet økonomisk?</h2>
           <div class="prose">
             <p>
-              Støtta er frivillig, og du vel sjølv kor mykje du vil gi. Som
-              privatperson kan du gi ein eingongssum. Bedrifter, lag og
-              organisasjonar kan gi ein fast sum i året i tre år, ein
-              eingongssum eller begge delar. Du treng ikkje bu i Hornindal for
-              å vere med.
+              Støtta er frivillig, og du vel sjølv kor mykje du vil gi.
+              Privatpersonar, bedrifter, lag og organisasjonar kan gi ein fast
+              sum i året i tre år, ein eingongssum eller begge delar. Du treng
+              ikkje bu i Hornindal for å vere med.
             </p>
             <p>
               I dag gir bedriftene frå 5&nbsp;000 til 50&nbsp;000 kroner i året.
@@ -263,7 +262,7 @@
           <label>Telefon <span class="valfri">(valfritt)</span>
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
-          <label data-berre="bedrift" hidden>Kroner per år i tre år <span class="valfri">(valfritt)</span>
+          <label data-berre="alle" hidden>Kroner per år i tre år <span class="valfri">(valfritt)</span>
             <input name="arleg" inputmode="numeric" disabled />
           </label>
           <label data-berre="alle" hidden>Eingongsbeløp i kroner <span class="valfri">(valfritt)</span>
@@ -327,7 +326,7 @@
     // felt blir ikkje sende, så dei ikkje overskriv det HubSpot har frå før.
     var skjema = document.getElementById('stotte-skjema');
     var f = skjema.elements;
-    // Privatpersonar ser eingongsbeløp, bedrifter òg namn og beløp per år.
+    // Alle ser beløpsfelta, bedrifter òg namnefeltet.
     // Felt for det andre valet blir gøymde og slått av, så dei ikkje blir sende.
     function visVal() {
       var val = f.bidreg_som.value;
@@ -350,7 +349,7 @@
       var avkryss = document.getElementById('stotte-nyheitsbrev').textContent.replace(/\s+/g, ' ').trim();
       // shortcut: val og beløp går inn i meldingsfeltet, ikkje i eigne HubSpot-eigenskapar. Lag eigenskapar om vi vil filtrere eller summere på dei.
       var melding = ['Bidreg som: ' + (f.bidreg_som.value === 'bedrift' ? 'bedrift, lag eller organisasjon' : 'privatperson')];
-      if (!f.arleg.disabled && f.arleg.value.trim()) melding.push('Beløp per år i tre år: ' + f.arleg.value.trim());
+      if (f.arleg.value.trim()) melding.push('Beløp per år i tre år: ' + f.arleg.value.trim());
       if (f.eingong.value.trim()) melding.push('Eingongsbeløp: ' + f.eingong.value.trim());
       if (f.message.value.trim()) melding.push('', f.message.value.trim());
       var felt = ['firstname', 'lastname', 'email', 'phone', 'company']
