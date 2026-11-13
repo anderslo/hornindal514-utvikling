@@ -51,7 +51,9 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 
 CSV-adressa står i `CSV_URL` øvst i arrangement.py. Test utan nettverk med
 `python3 .github/scripts/arrangement.py --csv fil.csv`, og køyr sjølvtesten med
-`--sjekk`.
+`--sjekk`. Han kontrollerer òg at `kva-skjer.html` og `kalender.ics` har dei
+same arrangementa, på same dag og med same klokkeslett, så køyr han etter kvar
+endring i kalenderen.
 
 ## Nyheitsbrevet
 

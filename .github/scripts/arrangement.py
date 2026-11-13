@@ -7,9 +7,10 @@ har laga: li-ar med data-skjema og VEVENT-ar med UID som byrjar på skjema-.
 
   python3 .github/scripts/arrangement.py            hentar CSV_URL eller $SKJEMA_CSV
   python3 .github/scripts/arrangement.py --csv FIL  les ei lokal fil
-  python3 .github/scripts/arrangement.py --sjekk    sjølvtest, rører ikkje repoet
+  python3 .github/scripts/arrangement.py --sjekk    sjølvtest og kontroll av kalenderfilene, rører ikkje repoet
 """
 import argparse, csv, hashlib, html, io, os, re, sys, tempfile, urllib.request
+from collections import Counter
 from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -212,15 +213,55 @@ def kjor(rot, csv_tekst, i_dag):
     return [s.name for s, _ in ut]
 
 
+def sjekk_filer(rot):
+    """Kontroll av filene i rot: ICS-formatet, og at sida og kalenderfila har dei
+    same arrangementa med same dag og klokkeslett. Kastar AssertionError ved feil."""
+    r = (Path(rot) / "kalender.ics").read_bytes()
+    assert r.count(b"\n") == r.count(b"\r\n"), "kalender.ics skal ha CRLF"
+    lange = [l[:40] for l in r.split(b"\r\n") if len(l) > 75]
+    assert not lange, f"linjer over 75 byte i kalender.ics: {lange}"
+    t = r.decode("utf-8").replace("\r\n ", "").replace("\r\n", "\n")
+    ev = re.findall(r"BEGIN:VEVENT\n(.*?)END:VEVENT", t, re.S)
+    assert len(ev) == t.count("BEGIN:VEVENT") == t.count("END:VEVENT"), "BEGIN:VEVENT og END:VEVENT går ikkje opp"
+    h = (Path(rot) / "kva-skjer.html").read_text(encoding="utf-8")
+    li = re.findall(r"<li\b.*?</li>", h[h.index(START):h.index(SLUTT)], re.S)
+    pa_sida = [re.search(r'<time datetime="(\d{4}-\d\d-\d\d)"', x)[1] for x in li]
+    assert pa_sida == sorted(pa_sida), "kalenderen på sida er ikkje sortert etter dato"
+    tekst = {}
+    for d, x in zip(pa_sida, li):
+        tekst.setdefault(d, []).append(re.sub(r"<[^>]+>", " ", x))
+    ics = []  # (dag, klokkeslett eller None, uid)
+    for v in ev:
+        u = re.search(r"^UID:(.+)$", v, re.M)
+        m = re.search(r"^DTSTART(?:;VALUE=DATE)?:(\d{8})(?:T(\d{6})Z)?$", v, re.M)
+        assert u and m and re.search(r"^DTSTAMP:", v, re.M) and re.search(r"^SUMMARY:", v, re.M), \
+            f"VEVENT manglar UID, DTSTAMP, SUMMARY eller DTSTART i UTC: {v[:60]!r}"
+        if m[2]:
+            s = datetime.strptime(m[1] + m[2], "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc).astimezone(OSLO)
+            ics.append((s.date().isoformat(), kl(s.time()), u[1]))
+        else:
+            ics.append((f"{m[1][:4]}-{m[1][4:6]}-{m[1][6:]}", None, u[1]))
+    uid = [u for _, _, u in ics]
+    assert len(uid) == len(set(uid)), "same UID fleire gonger i kalender.ics"
+    i_ics = Counter(d for d, _, _ in ics)
+    berre_sida, berre_ics = Counter(pa_sida) - i_ics, i_ics - Counter(pa_sida)
+    assert not berre_sida and not berre_ics, \
+        f"ulike arrangement: berre på sida {sorted(berre_sida)}, berre i kalender.ics {sorted(berre_ics)}"
+    for d, k, u in ics:
+        assert not k or any(re.search(rf"(?<![\d.]){re.escape(k)}(?!\d)", x) for x in tekst[d]), \
+            f"{u}: kl. {k} den {d} står ikkje på sida (feil i UTC-tida?)"
+
+
 def sjekk():
     kopi = Path(tempfile.mkdtemp())
     for n in ("kva-skjer.html", "kalender.ics"):
         (kopi / n).write_bytes((ROT / n).read_bytes())
-    orig = {n: (kopi / n).read_bytes() for n in ("kva-skjer.html", "kalender.ics")}
-    lest = lambda n: (kopi / n).read_bytes().decode("utf-8")
     i_dag = date(2026, 10, 31)
     hode = ",".join(FELT) + "\n"
     tom = hode
+    kjor(kopi, tom, i_dag)  # tek ut arrangementa frå det ekte skjemaet, så testen startar utan dei
+    orig = {n: (kopi / n).read_bytes() for n in ("kva-skjer.html", "kalender.ics")}
+    lest = lambda n: (kopi / n).read_bytes().decode("utf-8")
     lang = "Ø" * 40 + ", " + "å" * 40
     csv_ = hode + "\n".join([
         '2026-10-30 23:15:12,Juleverkstad,2027-07-16,2027-07-18,,,Grodås,Laget,,,',
@@ -270,13 +311,24 @@ def sjekk():
     assert "UID:skjema-20261029T100000@" in t and "DTSTAMP:20261029T090000Z" in t
     assert "Andre\\; linje" in t and lang.replace(",", "\\,") in t
     assert t.count("URL:" + SIDE) >= 2 and "alert(1)" not in t
+
+    # 5. Kontrollen av filene: det skriptet lagar, går gjennom, men ikkje eit klokkeslett med feil tidssone
+    sjekk_filer(kopi)
+    (kopi / "kalender.ics").write_bytes(r.replace(b"DTSTART:20261120T173000Z", b"DTSTART:20261120T183000Z"))
+    try:
+        sjekk_filer(kopi)
+        raise SystemExit("kontrollen skulle ha funne feil klokkeslett")
+    except AssertionError:
+        pass
     print("Sjølvtesten gjekk gjennom")
+    sjekk_filer(ROT)
+    print("Kalenderfilene i repoet er i orden")
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     p.add_argument("--csv", help="les ei lokal CSV-fil")
-    p.add_argument("--sjekk", action="store_true", help="køyr sjølvtesten")
+    p.add_argument("--sjekk", action="store_true", help="køyr sjølvtesten og kontroller kalenderfilene")
     a = p.parse_args()
     if a.sjekk:
         return sjekk()
