@@ -192,6 +192,18 @@ DESCRIPTION:Kvart år: torsdag-søndag i veke 40.
 URL:https://norskkornolfestival.no/
 END:VEVENT
 BEGIN:VEVENT
+UID:skjema-20261113T130501@hornindal514-utvikling
+DTSTAMP:20261113T120501Z
+DTSTART:20261128T090000Z
+DTEND:20261128T133000Z
+SUMMARY:Adventstreff\, salg av julebakst og lotteri
+LOCATION:Smia\, Hornindal
+DESCRIPTION:Vi har salg av julebakst\, lefser \, flatbrød.også allergiven
+ nleg. Det blir servert gratis mat og drikke. Lotteri med mange gevinstar. 
+ Velkomen til ei koselig stond\nArrangør: Hornindal bygdekvinnelag
+URL:https://hornindal514.no/kva-skjer.html
+END:VEVENT
+BEGIN:VEVENT
 UID:skjema-20261108T173404@hornindal514-utvikling
 DTSTAMP:20261108T163404Z
 DTSTART:20271015T180000Z
