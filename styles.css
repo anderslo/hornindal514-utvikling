@@ -1332,6 +1332,18 @@ img.timeline-bilete { aspect-ratio: 16 / 9; object-fit: cover; }
    kalenderblad. Arrangement som er over, tek sida bort av seg sjølv. */
 .abonner { margin: 28px 0 0; }
 .abonner-adresse { overflow-wrap: anywhere; }
+/* Innmelding og Friskus står ved sida av kalenderen. Boksane spenner over
+   radene til kalenderen, så første rad ikkje blir høgare enn overskrifta.
+   På mobil kjem dei under abonner-knappane. */
+#kalender .container { display: grid; grid-template-columns: minmax(0, 1fr) 300px; column-gap: 48px; align-items: start; }
+#kalender .container > * { grid-column: 1; }
+#kalender .kalender-meir { grid-column: 2; grid-row: 1 / span 20; display: grid; gap: 16px; }
+.kalender-meir + .agenda-ar { margin-top: 0; }
+.card .meld-inn-merk { margin-top: 14px; color: var(--muted); font-size: 13.5px; }
+@media (max-width: 900px) {
+  #kalender .container { display: block; }
+  #kalender .kalender-meir { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-bottom: 40px; }
+}
 .agenda-ar {
   margin: 48px 0 16px;
   font-family: var(--font-display);
