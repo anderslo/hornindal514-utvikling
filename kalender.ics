@@ -139,13 +139,11 @@ URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
 UID:hornindal-rundt-2027@hornindal514-utvikling
-DTSTAMP:20261030T200000Z
-DTSTART;VALUE=DATE:20270710
-DTEND;VALUE=DATE:20270711
+DTSTAMP:20261113T221542Z
+DTSTART;VALUE=DATE:20270703
+DTEND;VALUE=DATE:20270704
 SUMMARY:Hornindal Rundt
 LOCATION:Hornindal
-DESCRIPTION:Kvart år: laurdag i veke 27. Datoen er rekna ut frå tidlegare
-  år og er ikkje kunngjord enno. Sjekk hos arrangøren.
 URL:https://hornindalrundt.no/
 END:VEVENT
 BEGIN:VEVENT
@@ -172,9 +170,8 @@ URL:https://www.facebook.com/Kulturdaganeihornindal/
 END:VEVENT
 BEGIN:VEVENT
 UID:hornindalsrokken-skyrace-2027@hornindal514-utvikling
-DTSTAMP:20261108T195742Z
-DTSTART;VALUE=DATE:20270821
-DTEND;VALUE=DATE:20270822
+DTSTAMP:20261113T221542Z
+DTSTART:20270821T080000Z
 SUMMARY:Hornindalsrokken Skyrace
 LOCATION:Horndøla bru\, Hornindal
 DESCRIPTION:Krevjande og teknisk fjelløp over Hornindalsrokken\, 17\,5 km 
@@ -183,12 +180,13 @@ URL:https://hornindalsrokkenskyrace.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:kornolfestival-2027@hornindal514-utvikling
-DTSTAMP:20261030T200000Z
+DTSTAMP:20261113T221542Z
 DTSTART;VALUE=DATE:20271007
 DTEND;VALUE=DATE:20271011
 SUMMARY:Norsk Kornølfestival
 LOCATION:Honndalshallen\, Hornindal
-DESCRIPTION:Kvart år: torsdag-søndag i veke 40.
+DESCRIPTION:Dørene opnar torsdag kl. 19\, og aldersgrensa er 18 år. Bille
+ ttar på nettsida til festivalen.
 URL:https://norskkornolfestival.no/
 END:VEVENT
 BEGIN:VEVENT
