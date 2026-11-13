@@ -144,7 +144,6 @@ DTSTART;VALUE=DATE:20270703
 DTEND;VALUE=DATE:20270704
 SUMMARY:Hornindal Rundt
 LOCATION:Hornindal
-DESCRIPTION:Kvart år: laurdag i veke 27.
 URL:https://hornindalrundt.no/
 END:VEVENT
 BEGIN:VEVENT
@@ -176,9 +175,7 @@ DTSTART:20270821T080000Z
 SUMMARY:Hornindalsrokken Skyrace
 LOCATION:Horndøla bru\, Hornindal
 DESCRIPTION:Krevjande og teknisk fjelløp over Hornindalsrokken\, 17\,5 km 
- og 1 300 høgdemeter frå Horndøla bru til Trondstad grendahus. Påmeldin
- g hos EQ Timing: https://signup.eqtiming.com/?Event=Hornindalsrokken_Skyra
- ce
+ og 1 300 høgdemeter frå Horndøla bru til Trondstad grendahus.
 URL:https://hornindalsrokkenskyrace.com/
 END:VEVENT
 BEGIN:VEVENT
@@ -188,8 +185,8 @@ DTSTART;VALUE=DATE:20271007
 DTEND;VALUE=DATE:20271011
 SUMMARY:Norsk Kornølfestival
 LOCATION:Honndalshallen\, Hornindal
-DESCRIPTION:Kvart år: torsdag-søndag i veke 40. Dørene opnar fredag kl. 
- 17 og laurdag kl. 12. Billettar på nettsida til festivalen.
+DESCRIPTION:Dørene opnar torsdag kl. 19\, og aldersgrensa er 18 år. Bille
+ ttar på nettsida til festivalen.
 URL:https://norskkornolfestival.no/
 END:VEVENT
 BEGIN:VEVENT
