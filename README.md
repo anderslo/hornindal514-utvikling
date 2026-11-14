@@ -59,7 +59,9 @@ endring i kalenderen.
 ## Bedriftslista
 
 Lista i `bedrifter.html` vart henta frå Brreg (Einingsregisteret) 14. november
-2026 og blir sjekka éin gong i året. Filterreglane står i issue #3.
+2026 og blir sjekka éin gong i året. Filterreglane står i issue #3, med éi
+endring: enkeltpersonføretak med forretningsnamn er med sjølv om dei ikkje er
+MVA-registrerte.
 
 Støttespelarane står tre stader: logobandet i `bedrifter.html`, lista i
 `bidra.html` (`#stotte`) og teksten under økonomien på framsida. Endrar du éin,

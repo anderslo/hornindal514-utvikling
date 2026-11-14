@@ -353,21 +353,11 @@ if (!UTAN_NETT) {
     tiFeil.filter(x => x.namn !== 'Olavs Matkro & Pub').length === 0 && problem.length === 0 ? (utanTreff.filter(n => n !== 'Olavs Matkro & Pub' && n !== 'Treskjærarmeister Rolf Taraldset').length > 0 ? 'delvis' : 'bestått') : 'feila',
     `registerrader henta ${alle.length}; ${matcha.length - utanTreff.length}/${matcha.length} namn kopla til Brreg-rad; utan treff: ${utanTreff.join(', ') || 'ingen'}; problem: ${problem.join(' || ') || 'ingen'}; ti tilfeldige: ${tiRader.join(' // ')}`);
 
-  // K5 ENK
-  const enk = matcha.filter(x => x.treff[0]?.orgform === 'ENK').map(x => {
-    const t = x.treff[0]; const lenkja = kort.flatMap(k => k.lenkjer).some(l => l.namn === x.namn);
-    return { namn: x.namn, orgnr: t.orgnr, brregNamn: t.navn, mva: !!t.mva, hjemmeside: t.hjemmeside || null, lenkja };
-  });
-  const enkBrot = enk.filter(e => !e.mva);
-  const enkUtanNett = enk.filter(e => !e.hjemmeside && !e.lenkja);
-  console.log(`  ENK på sida: ${enk.length}; utan MVA: ${enkBrot.map(e => e.namn).join(', ') || 'ingen'}; utan nettside (kan ha forretningsnamn): ${enkUtanNett.map(e => `${e.namn} (Brreg: ${e.brregNamn})`).join(' | ')}`);
-  // Manuell vurdering (runde 1): visingsnamn som er eit personnamn med tittel eller bransjeord, ENK utan nettside.
-  // Reknar ikkje ut i koden, sidan forretningsnamn ikkje står i det opne enheter-svaret.
-  const PERSONNAMN = ['Bygging Knut Lunde', 'Veterinær Rebekka Bakke', 'T. Eriksen Eiendomsservice'];
-  const personLike = enkUtanNett.filter(e => PERSONNAMN.includes(e.namn));
-  krit(5, 'Enkeltpersonføretak: MVA-registrert, og forretningsnamn eller nettside; reine personnamn er ikkje med',
-    enkBrot.length === 0 && personLike.length === 0 ? 'bestått' : (enkBrot.length === 0 ? 'delvis' : 'feila'),
-    `${enk.length} ENK på sida; utan MVA: ${enkBrot.map(e => e.namn).join(', ') || 'ingen'}; utan nettside der visingsnamnet er eit personnamn med tittel/bransjeord: ${personLike.map(e => `${e.namn} = ${e.brregNamn}`).join(' | ') || 'ingen'}. Merk: forretningsnamn står ikkje i det opne enheter-svaret, så «namnet er eit forretningsnamn» er vurdert ut frå visingsnamnet.`);
+  // K5 ENK. Anders 14.11.2026: MVA-kravet er teke bort, og yrke pluss personnamn er godkjent.
+  // Om namnet er eit forretningsnamn, står ikkje i det opne enheter-svaret, så lista må vurderast for hand.
+  const enk = matcha.filter(x => x.treff[0]?.orgform === 'ENK').map(x => `${x.namn} = ${x.treff[0].navn}${x.treff[0].mva ? '' : ' (utan MVA)'}`);
+  krit(5, 'Enkeltpersonføretak: forretningsnamn eller nettside; reine personnamn er ikkje med',
+    'manuell', `${enk.length} ENK på sida, vurder at namna er forretningsnamn: ${enk.join(' | ')}`);
 } else { krit(4, 'Brreg', 'ikkje køyrt', 'UTAN_NETT'); krit(5, 'ENK', 'ikkje køyrt', 'UTAN_NETT'); }
 
 // ---------- Lenkjer: eksterne på /bedrifter, interne og anker på alle sider ----------
