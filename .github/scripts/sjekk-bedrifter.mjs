@@ -85,11 +85,11 @@ const band = await m.page.evaluate(async () => {
     ledetekst: document.querySelector('#stottespelarar .lede')?.textContent.replace(/\s+/g, ' ').trim()
   };
 });
-const forventa = ['Ekornes Grodås', 'Vest Biogass', 'Øen Kuldeteknikk', 'GRS', 'T. Eriksen Eiendomsservice', 'LøFlo Installasjon', 'Hornindal Fotball'];
-const altOk = forventa.every(n => band.altar.includes(n));
+const forventa = ['Ekornes Grodås', 'Vest Biogass', 'Øen Kuldeteknikk', 'GRS', 'T. Eriksen Eiendomsservice', 'LøFlo Installasjon', 'Foreininga Grobygget', 'Hornindal Fotball'];
+const namnOk = forventa.every(n => band.altar.includes(n) || band.flisar.includes(n));
 const likeHoegder = new Set(band.hoegder).size === 1 && new Set(band.breidder).size === 1;
-krit(2, 'Støttespelarband: 8 element, alt-tekst, namneflis utan logo, lenkje til bidra.html#stotte',
-  band.antal === 8 && altOk && band.flisar.length === 1 && likeHoegder && band.lasta.every(Boolean) && band.lenkjeTilBidra ? 'bestått' : 'feila',
+krit(2, 'Støttespelarband: 8 element, logo med alt-tekst eller namneflis, lenkje til bidra.html#stotte',
+  band.antal === 8 && namnOk && likeHoegder && band.lasta.every(Boolean) && band.lenkjeTilBidra ? 'bestått' : 'feila',
   `${band.antal} fliser; alt: ${band.altar.join(' | ')}; namneflisar: ${band.flisar.join(' | ')}; flishøgder ${[...new Set(band.hoegder)]}, breidder ${[...new Set(band.breidder)]}; alle bilete lasta ${band.lasta.every(Boolean)}; lenkje til bidra#stotte i teksten under bandet: ${band.lenkjeTilBidra}; sjølve flisene er lenkja: ${band.lenkjeInniBand}`);
 if (!band.lenkjeInniBand) merk('K2: Bandet sjølve (logoflisene) er ikkje klikkbart. «Bandet lenkjer til bidra.html#stotte» er berre oppfylt via tekstlenkja i ingressen over bandet, og i kontaktkortet. Rimeleg tolking brukt: lenkja i seksjonen tel. Fil: bedrifter.html, linje ~84-103.');
 { // logoar utan forskjell på støttespelarar og andre er K3; her: støttespelarar utan logo skal ha namn

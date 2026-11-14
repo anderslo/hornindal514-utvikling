@@ -71,7 +71,8 @@ http://localhost:8744` (med `python3 -m http.server 8744`) sjekkar sida.
 Tala i snarvegane øvst på sida («12 bedrifter») står for hand i HTML-en. Legg du
 til eller tek ut ei bedrift, rettar du talet, og testen seier frå om det ikkje
 stemmer med lista. Kor stor ein logo er i logobandet, står i `width` og `height`
-på biletet.
+på biletet. Ein støttespelar utan logo får namnet sitt i
+`<span class="logoband-namn">`.
 
 ## Stilarket har versjon
 
