@@ -16,6 +16,7 @@ JavaScript-rammeverk. Lett å vedlikehalde og raskt å laste i nettlesaren.
 ├── kva-skjer.html            # Kva skjer: kalender, faste tilbod og praktisk kvardag
 ├── kalender.ics              # Kalenderen som folk kan abonnere på (same arrangement som på kva-skjer.html)
 ├── frivillig.html            # Lag og frivillig arbeid
+├── bedrifter.html            # Bedrifter i Hornindal: alle bedriftene (frå Einingsregisteret) og støttespelarane
 ├── smia.html                 # Smia
 ├── bidra.html                # Landingssida for QR-koden på flygebladet: ope møte og interesseskjema (HubSpot)
 ├── personvern.html           # Personvernerklæring
@@ -54,6 +55,16 @@ CSV-adressa står i `CSV_URL` øvst i arrangement.py. Test utan nettverk med
 `--sjekk`. Han kontrollerer òg at `kva-skjer.html` og `kalender.ics` har dei
 same arrangementa, på same dag og med same klokkeslett, så køyr han etter kvar
 endring i kalenderen.
+
+## Bedriftslista
+
+Lista i `bedrifter.html` vart henta frå Brreg (Einingsregisteret) 14. november
+2026 og blir sjekka éin gong i året. Filterreglane står i issue #3.
+
+Støttespelarane står tre stader: logobandet i `bedrifter.html`, lista i
+`bidra.html` (`#stotte`) og teksten under økonomien på framsida. Endrar du éin,
+endrar du alle. Testen `node .github/scripts/sjekk-bedrifter.mjs
+http://localhost:8744` (med `python3 -m http.server 8744`) sjekkar sida.
 
 ## Nyheitsbrevet
 
