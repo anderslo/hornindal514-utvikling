@@ -746,10 +746,11 @@ button { font: inherit; cursor: pointer; }
 /* Utan hover (mobil) viser pila alltid kva namn som er lenkjer. */
 @media (hover: none) { .partners li a::after { opacity: 1; } }
 
-/* Logoband: støttespelarar med logoar i ulike proporsjonar, i flisar med lik høgd */
+/* Logoband: støttespelarar i flisar med lik høgd. Kor stor kvar logo er, står i
+   width-attributtet, så logoar med ulike proporsjonar verkar om lag like store. */
 .logoband {
   list-style: none;
-  padding: 0; margin: 28px 0 0;
+  padding: 0; margin: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
@@ -758,17 +759,29 @@ button { font: inherit; cursor: pointer; }
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  height: 112px;
-  padding: 16px 20px;
+  height: 120px;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.logoband img {
-  max-width: 100%; max-height: 56px;
-  width: auto; height: auto;
-  object-fit: contain;
+/* Logo som er teikna for mørk bakgrunn */
+.logoband .logoband-mork { background: var(--ink); border-color: var(--ink); }
+/* Heile flisa er lenkja */
+.logoband a {
+  align-self: stretch;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -20px;
+  padding: 20px;
+  border-radius: inherit;
+  transition: box-shadow 0.15s ease;
 }
+.logoband a:hover { box-shadow: 0 0 0 2px var(--blue); }
+.logoband img { max-height: 100%; object-fit: contain; }
 .logoband-namn {
   font-weight: 700;
   text-align: center;
@@ -778,6 +791,41 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 700px) {
   .logoband { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .logoband li { height: 96px; padding: 12px; }
+  .logoband a { margin: -12px; padding: 12px; }
+}
+
+/* Bransjekort i full breidd (byggjer på .card): tekst til venstre, bedriftene i spalter til høgre */
+.cards-1 { grid-template-columns: 1fr; }
+.card--bransje {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+  grid-template-rows: auto 1fr;
+  column-gap: 48px;
+}
+.card--bransje:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.bedriftsliste {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  list-style: none;
+  padding: 0; margin: 0;
+  columns: 3 190px;
+  column-gap: 32px;
+}
+.bedriftsliste li {
+  break-inside: avoid;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+/* Heile rada er lenkja, så ho er lett å treffe på mobil */
+.bedriftsliste a { display: block; margin: -9px 0; padding: 9px 0; }
+.bedriftsliste a:hover { text-decoration: underline; text-underline-offset: 2px; }
+.bedriftsliste a::after { content: "\00a0↗"; content: "\00a0↗" / ""; }
+@media (max-width: 900px) {
+  .card--bransje { grid-template-columns: 1fr; }
+  .bedriftsliste { grid-column: 1; grid-row: auto; margin-top: 16px; }
 }
 
 /* Contact */
@@ -953,6 +1001,53 @@ button { font: inherit; cursor: pointer; }
 .hero.hero-compact .hero-inner { max-width: 780px; }
 @media (max-width: 700px) {
   .hero.hero-compact { padding: 32px 0 48px; }
+}
+
+/* Delt hero på bedriftssida: tittelen til venstre og bransjane til høgre.
+   Under 1000 px står bransjane under teksten, som på dei andre undersidene. */
+.hero.hero-compact .hero-delt {
+  max-width: var(--container);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: end;
+}
+.hero-delt .lede { margin-bottom: 0; }
+@media (max-width: 1000px) {
+  .hero.hero-compact .hero-delt { max-width: 780px; display: block; }
+  .hero-delt .lede { margin-bottom: 36px; }
+}
+
+/* Bransjane som snarvegar i heroen. Glaset er mørkt, så den kvite teksten er lesbar også over skyene i biletet. */
+.bransjenav ul {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 10px;
+}
+.bransjenav a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  height: 100%;
+  padding: 12px 14px;
+  color: #fff;
+  line-height: 1.25;
+  background: rgba(14, 19, 24, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.15s ease;
+}
+.bransjenav a:hover { background: rgba(255, 255, 255, 0.18); color: #fff; }
+.bransjenav strong { font-size: 15px; }
+.bransjenav span { font-size: 13px; color: rgba(255, 255, 255, 0.82); }
+@media (min-width: 701px) and (max-width: 1000px) {
+  .bransjenav ul { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* «Tilbake»-lenke øvst i hero */

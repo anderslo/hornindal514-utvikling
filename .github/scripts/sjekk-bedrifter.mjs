@@ -85,11 +85,11 @@ const band = await m.page.evaluate(async () => {
     ledetekst: document.querySelector('#stottespelarar .lede')?.textContent.replace(/\s+/g, ' ').trim()
   };
 });
-const forventa = ['Ekornes Grodås', 'Vest Biogass', 'Øen Kuldeteknikk', 'GRS', 'LøFlo Installasjon', 'Hornindal Fotball'];
+const forventa = ['Ekornes Grodås', 'Vest Biogass', 'Øen Kuldeteknikk', 'GRS', 'T. Eriksen Eiendomsservice', 'LøFlo Installasjon', 'Hornindal Fotball'];
 const altOk = forventa.every(n => band.altar.includes(n));
 const likeHoegder = new Set(band.hoegder).size === 1 && new Set(band.breidder).size === 1;
 krit(2, 'Støttespelarband: 8 element, alt-tekst, namneflis utan logo, lenkje til bidra.html#stotte',
-  band.antal === 8 && altOk && band.flisar.length === 2 && likeHoegder && band.lasta.every(Boolean) && band.lenkjeTilBidra ? 'bestått' : 'feila',
+  band.antal === 8 && altOk && band.flisar.length === 1 && likeHoegder && band.lasta.every(Boolean) && band.lenkjeTilBidra ? 'bestått' : 'feila',
   `${band.antal} fliser; alt: ${band.altar.join(' | ')}; namneflisar: ${band.flisar.join(' | ')}; flishøgder ${[...new Set(band.hoegder)]}, breidder ${[...new Set(band.breidder)]}; alle bilete lasta ${band.lasta.every(Boolean)}; lenkje til bidra#stotte i teksten under bandet: ${band.lenkjeTilBidra}; sjølve flisene er lenkja: ${band.lenkjeInniBand}`);
 if (!band.lenkjeInniBand) merk('K2: Bandet sjølve (logoflisene) er ikkje klikkbart. «Bandet lenkjer til bidra.html#stotte» er berre oppfylt via tekstlenkja i ingressen over bandet, og i kontaktkortet. Rimeleg tolking brukt: lenkja i seksjonen tel. Fil: bedrifter.html, linje ~84-103.');
 { // logoar utan forskjell på støttespelarar og andre er K3; her: støttespelarar utan logo skal ha namn
@@ -100,9 +100,9 @@ if (!band.lenkjeInniBand) merk('K2: Bandet sjølve (logoflisene) er ikkje klikkb
 // K3 alfabetisk + lenkjer i ny fane
 const kort = await m.page.evaluate(() => [...document.querySelectorAll('#bransjar .card')].map(c => ({
   tittel: c.querySelector('h3').textContent.trim(),
-  namn: [...c.querySelectorAll('.partners li')].map(li => li.textContent.trim()),
-  klasserPaaLi: [...new Set([...c.querySelectorAll('.partners li')].map(li => li.className))],
-  lenkjer: [...c.querySelectorAll('.partners a')].map(a => ({ href: a.href, target: a.target, rel: a.rel, namn: a.textContent.trim() }))
+  namn: [...c.querySelectorAll('.bedriftsliste li')].map(li => li.textContent.trim()),
+  klasserPaaLi: [...new Set([...c.querySelectorAll('.bedriftsliste li')].map(li => li.className))],
+  lenkjer: [...c.querySelectorAll('.bedriftsliste a')].map(a => ({ href: a.href, target: a.target, rel: a.rel, namn: a.textContent.trim() }))
 })));
 const uorden = [];
 for (const k of kort) {
@@ -118,6 +118,18 @@ krit(3, 'Bransjekort: alfabetisk innan kort, lenkja bedrifter opnar i ny fane, i
   uorden.length === 0 && ikkjeNyFane.length === 0 && sondring.length === 0 ? 'bestått' : (ikkjeNyFane.length === 0 && sondring.length === 0 ? 'delvis' : 'feila'),
   `${antalBedrifter} bedrifter i 8 kort, ${antalLenkja} lenkja. Alle lenkjer target=_blank+noopener: ${ikkjeNyFane.length === 0}. Rekkjefølgjefeil (nb-kollasjon, tegnsetting tel): ${uorden.length}. Klassar som skil støttespelarar: ${sondring.length}`);
 for (const u of uorden) merk('K3 rekkjefølgje: ' + u + ' (bedrifter.html)');
+
+// K13 snarvegane i heroen: tala står for hand i HTML-en, så dei må følgje listene
+const snarvegar = await m.page.evaluate(() => [...document.querySelectorAll('.bransjenav a')].map(a => ({
+  namn: a.querySelector('strong').textContent.trim(),
+  tal: a.querySelector('span').textContent.trim(),
+  kort: document.querySelector(a.getAttribute('href'))?.querySelector('h3')?.textContent.trim()
+})));
+const snarvegFeil = snarvegar.filter((s, i) => s.namn !== kort[i]?.tittel || s.kort !== s.namn
+  || (s.tal !== `${kort[i].namn.length} bedrifter` && !(s.namn.startsWith('Landbruk') && /gardsbruk/.test(s.tal)))).map(s => `${s.namn}: «${s.tal}»`);
+krit(13, 'Snarvegane i heroen: éin per bransjekort, same namn og rekkjefølgje, og talet stemmer med lista',
+  snarvegar.length === kort.length && snarvegFeil.length === 0 ? 'bestått' : 'feila',
+  `${snarvegar.length} snarvegar; feil: ${snarvegFeil.join(' | ') || 'ingen'}; tal: ${snarvegar.map(s => s.tal).join(', ')}`);
 
 // K6 landbruk
 const landbruk = kort.find(k => k.tittel.startsWith('Landbruk'));
@@ -348,7 +360,8 @@ if (!UTAN_NETT) {
   const tilfeldige = [...matcha].sort(() => Math.random() - 0.5).slice(0, 10);
   const tiRader = tilfeldige.map(x => { const t = x.treff[0]; return t ? `${x.namn} -> ${t.navn} [${t.orgform}, ${t.nace}, ${t.postnr}, ${t.type}, konkurs=${t.konkurs}, avv=${t.avvikling}]` : `${x.namn} -> UTAN TREFF`; });
   console.log('  ti tilfeldige:\n    ' + tiRader.join('\n    '));
-  const tiFeil = tilfeldige.filter(x => !x.treff[0] || x.treff[0].konkurs || x.treff[0].avvikling || !['6763', '6761'].includes(x.treff[0].postnr));
+  // Namn utan Brreg-rad gir «delvis» under. Tel dei ikkje her, elles avgjer det tilfeldige utvalet om testen feilar.
+  const tiFeil = tilfeldige.filter(x => x.treff[0] && (x.treff[0].konkurs || x.treff[0].avvikling || !['6763', '6761'].includes(x.treff[0].postnr)));
   krit(4, 'Brreg: aktive, postnummer 6763/6761, ingen holding/lag/burettslag/sameige (ti tilfeldige + heile lista)',
     tiFeil.filter(x => x.namn !== 'Olavs Matkro & Pub').length === 0 && problem.length === 0 ? (utanTreff.filter(n => n !== 'Olavs Matkro & Pub' && n !== 'Treskjærarmeister Rolf Taraldset').length > 0 ? 'delvis' : 'bestått') : 'feila',
     `registerrader henta ${alle.length}; ${matcha.length - utanTreff.length}/${matcha.length} namn kopla til Brreg-rad; utan treff: ${utanTreff.join(', ') || 'ingen'}; problem: ${problem.join(' || ') || 'ingen'}; ti tilfeldige: ${tiRader.join(' // ')}`);
@@ -462,11 +475,12 @@ for (const w of [1280, 390]) {
   const p = await ny(cr, 390, 844);
   await p.page.goto(`${base}/bedrifter.html`);
   const tilIndustri = await p.page.evaluate(() => { const h = [...document.querySelectorAll('#bransjar h3')][0]; return { y: Math.round(h.getBoundingClientRect().top + scrollY), vh: innerHeight, kortHoegd: Math.round(h.closest('.card').getBoundingClientRect().height), side: document.documentElement.scrollHeight }; });
-  await p.page.click('text=Sjå bedriftene');
+  await p.page.click('.bransjenav a'); // første snarvegen i heroen: Industri og produksjon
   await p.page.waitForTimeout(2000);
   const etterKlikk = await p.page.evaluate(() => { const h = [...document.querySelectorAll('#bransjar h3')][0]; const r = h.getBoundingClientRect(); const hdr = document.querySelector('.site-header').getBoundingClientRect(); return { toppHeading: Math.round(r.top), headerBunn: Math.round(hdr.bottom), headerSticky: getComputedStyle(document.querySelector('.site-header')).position, eyebrowSynleg: r.top > hdr.bottom, headingSynleg: r.top >= hdr.bottom && r.bottom < innerHeight, scrollY: Math.round(scrollY) }; });
-  await skot(p.page, 'persona1-mobil-etter-sja-bedriftene');
-  console.log(`  persona 1 (tilflyttar): industri-overskrifta ligg ${tilIndustri.y}px ned (${(tilIndustri.y / tilIndustri.vh).toFixed(1)} skjermhøgder) utan knappen. Etter «Sjå bedriftene»: ${JSON.stringify(etterKlikk)}. Industrikortet er ${tilIndustri.kortHoegd}px høgt.`);
+  await skot(p.page, 'persona1-mobil-etter-snarveg');
+  console.log(`  persona 1 (tilflyttar): industri-overskrifta ligg ${tilIndustri.y}px ned (${(tilIndustri.y / tilIndustri.vh).toFixed(1)} skjermhøgder) utan snarvegen. Etter snarvegen «Industri og produksjon»: ${JSON.stringify(etterKlikk)}. Industrikortet er ${tilIndustri.kortHoegd}px høgt.`);
+  if (!etterKlikk.headingSynleg) merk('Snarvegen i heroen landar ikkje med bransjeoverskrifta synleg under toppmenyen');
   const nokkel = await p.page.evaluate(() => { const t = document.querySelector('main').innerText.toLowerCase(); return { elektr: t.includes('elektr'), royr: t.includes('røyrlegg'), jobb: t.includes('jobb') || t.includes('arbeidsplass'), ledigeStillingar: t.includes('ledig'), tel: !!document.querySelector('#bransjar a[href^="tel:"]'), mailto: !!document.querySelector('#bransjar a[href^="mailto:"]') }; });
   console.log('  persona 2 (elektrikar/røyrleggjar): ' + JSON.stringify(nokkel));
   // kor mange tapp frå toppen til kontakt for bedriftsleiar

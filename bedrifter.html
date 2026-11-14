@@ -24,7 +24,7 @@
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
   <a class="skip-link" href="#hovudinnhald">Hopp til hovudinnhald</a>
@@ -62,23 +62,33 @@
       </picture>
       <div class="hero-overlay" aria-hidden="true"></div>
 
-      <div class="container hero-inner">
-        <a href="index.html" class="page-back">← Tilbake til framsida</a>
-        <p class="eyebrow eyebrow-light">Næringslivet</p>
-        <h1>
-          <span class="h1-line">Bedriftene</span>
-          <span class="h1-line">i <span class="accent">Hornindal</span></span>
-        </h1>
-        <p class="lede lede-light">
-          Møbelfabrikk, riflekolbar, biogass, snikkarar, butikk og over 80
-          gardsbruk. Her er bedriftene i bygda, sorterte etter bransje, anten
-          du vil flytte hit, treng ein handverkar eller leitar etter ein
-          samarbeidspartnar.
-        </p>
-        <div class="hero-actions">
-          <a href="#bransjar" class="btn btn-primary">Sjå bedriftene</a>
-          <a href="#kontakt-bedrift" class="btn btn-ghost-light">Manglar bedrifta di?</a>
+      <div class="container hero-inner hero-delt">
+        <div>
+          <a href="index.html" class="page-back">← Tilbake til framsida</a>
+          <p class="eyebrow eyebrow-light">Næringslivet</p>
+          <h1>
+            <span class="h1-line">Bedriftene</span>
+            <span class="h1-line">i <span class="accent">Hornindal</span></span>
+          </h1>
+          <p class="lede lede-light">
+            Møbelfabrikk, riflekolbar, biogass, snikkarar, butikk og over 80
+            gardsbruk. Her er bedriftene i bygda, sorterte etter bransje, anten
+            du vil flytte hit, treng ein handverkar eller leitar etter ein
+            samarbeidspartnar.
+          </p>
         </div>
+        <nav class="bransjenav" aria-label="Bransjar">
+          <ul>
+            <li><a href="#industri"><strong>Industri og produksjon</strong><span>12 bedrifter</span></a></li>
+            <li><a href="#bygg"><strong>Bygg, handverk og anlegg</strong><span>25 bedrifter</span></a></li>
+            <li><a href="#handel"><strong>Handel og service</strong><span>12 bedrifter</span></a></li>
+            <li><a href="#kontor"><strong>Kontor, IT og rådgjeving</strong><span>15 bedrifter</span></a></li>
+            <li><a href="#mat"><strong>Mat, overnatting og opplevingar</strong><span>14 bedrifter</span></a></li>
+            <li><a href="#transport"><strong>Transport</strong><span>3 bedrifter</span></a></li>
+            <li><a href="#helse"><strong>Helse og oppvekst</strong><span>8 bedrifter</span></a></li>
+            <li><a href="#landbruk"><strong>Landbruk og skog</strong><span>Over 80 gardsbruk</span></a></li>
+          </ul>
+        </nav>
       </div>
     </section>
 
@@ -94,14 +104,14 @@
           </p>
         </div>
         <ul class="logoband">
-          <li><img src="assets/stottespelarar/ekornes.svg" alt="Ekornes Grodås" width="243" height="26" loading="lazy" /></li>
-          <li><img src="assets/stottespelarar/vest-biogass.webp" alt="Vest Biogass" width="262" height="160" loading="lazy" /></li>
-          <li><img src="assets/stottespelarar/oen-kuldeteknikk.webp" alt="Øen Kuldeteknikk" width="150" height="45" loading="lazy" /></li>
-          <li><img src="assets/stottespelarar/grs.webp" alt="GRS" width="191" height="88" loading="lazy" /></li>
-          <li><span class="logoband-namn">T. Eriksen Eiendomsservice</span></li>
-          <li><img src="assets/stottespelarar/loflo.webp" alt="LøFlo Installasjon" width="200" height="79" loading="lazy" /></li>
+          <li><a href="https://www.ekornes.com" target="_blank" rel="noopener noreferrer"><img src="assets/stottespelarar/ekornes.svg" alt="Ekornes Grodås" width="200" height="21" loading="lazy" /></a></li>
+          <li><a href="https://vestbiogass.no" target="_blank" rel="noopener noreferrer"><img src="assets/stottespelarar/vest-biogass.webp" alt="Vest Biogass" width="131" height="80" loading="lazy" /></a></li>
+          <li><a href="https://kuldeteknikk.com" target="_blank" rel="noopener noreferrer"><img src="assets/stottespelarar/oen-kuldeteknikk.webp" alt="Øen Kuldeteknikk" width="150" height="45" loading="lazy" /></a></li>
+          <li><a href="https://grsriflestocks.com" target="_blank" rel="noopener noreferrer"><img src="assets/stottespelarar/grs.webp" alt="GRS" width="140" height="64" loading="lazy" /></a></li>
+          <li class="logoband-mork"><a href="https://teiendom.no" target="_blank" rel="noopener noreferrer"><img src="assets/stottespelarar/t-eriksen.webp" alt="T. Eriksen Eiendomsservice" width="190" height="67" loading="lazy" /></a></li>
+          <li><a href="https://www.loflo.no" target="_blank" rel="noopener noreferrer"><img src="assets/stottespelarar/loflo.webp" alt="LøFlo Installasjon" width="158" height="62" loading="lazy" /></a></li>
           <li><span class="logoband-namn">Foreininga Grobygget</span></li>
-          <li><img src="assets/stottespelarar/hornindal-fotball.webp" alt="Hornindal Fotball" width="449" height="160" loading="lazy" /></li>
+          <li><a href="https://www.hornindal-fotball.no/" target="_blank" rel="noopener noreferrer"><img src="assets/stottespelarar/hornindal-fotball.webp" alt="Hornindal Fotball" width="190" height="68" loading="lazy" /></a></li>
         </ul>
       </div>
     </section>
@@ -112,18 +122,17 @@
           <p class="eyebrow">Bransjar</p>
           <h2>Frå fabrikk til fjøs.</h2>
         </div>
-        <div class="cards">
-          <article class="card card-01">
+        <div class="cards cards-1">
+          <article id="industri" class="card card--bransje card-01">
             <h3>Industri og produksjon</h3>
             <p>
               Her ligg nokre av dei største arbeidsplassane i bygda. Ekornes har
               møbelfabrikk på Grodås, GRS lagar riflekolbar, Vest Biogass
               produserer biogass, og Seljeset Gardsmeieri lagar meieriprodukt. I
-              tillegg kjem treskjæring, betongvarer og mekaniske verkstader.
+              tillegg kjem treskjæring og mekaniske verkstader.
             </p>
-            <ul class="partners" style="margin:16px 0 0;">
+            <ul class="bedriftsliste">
               <li><a href="https://www.ekornes.com" target="_blank" rel="noopener noreferrer">Ekornes Grodås</a></li>
-              <li>Fannemel Cementvarefabrikk</li>
               <li>GM Muldsvor</li>
               <li><a href="https://grsriflestocks.com" target="_blank" rel="noopener noreferrer">GRS</a></li>
               <li>Honndalshytta</li>
@@ -137,7 +146,7 @@
               <li><a href="https://vestbiogass.no" target="_blank" rel="noopener noreferrer">Vest Biogass</a></li>
             </ul>
           </article>
-          <article class="card card-02">
+          <article id="bygg" class="card card--bransje card-02">
             <h3>Bygg, handverk og anlegg</h3>
             <p>
               Snikkarar og byggjefirma, maskinentreprenørar, røyrleggjar,
@@ -145,7 +154,7 @@
               eigedomsservice, eigedomsutvikling og utleige av maskinar står
               her òg.
             </p>
-            <ul class="partners" style="margin:16px 0 0;">
+            <ul class="bedriftsliste">
               <li>B&amp;E Entreprenør</li>
               <li>Bygging Knut Lunde</li>
               <li>EAB Bygg &amp; Vedlikahald</li>
@@ -164,7 +173,7 @@
               <li><a href="https://nordfjordvvs.no" target="_blank" rel="noopener noreferrer">Nordfjord VVS</a></li>
               <li>Primo Maskin</li>
               <li>Stad Bolig</li>
-              <li>T. Eriksen Eiendomsservice</li>
+              <li><a href="https://teiendom.no" target="_blank" rel="noopener noreferrer">T. Eriksen Eiendomsservice</a></li>
               <li>Total Service Kviven</li>
               <li>Tvendeseter Utleige</li>
               <li>VB Prosjekt</li>
@@ -173,13 +182,13 @@
               <li>Årvik Bygg</li>
             </ul>
           </article>
-          <article class="card card-03">
+          <article id="handel" class="card card--bransje card-03">
             <h3>Handel og service</h3>
             <p>
               Daglegvare, bensinstasjon, bilverkstad, bok og interiør,
               klesbutikk, hudpleie og frisørsalongar.
             </p>
-            <ul class="partners" style="margin:16px 0 0;">
+            <ul class="bedriftsliste">
               <li><a href="https://www.coop.no/butikker/coop-prix/coop-prix-hornindal-1570" target="_blank" rel="noopener noreferrer">Coop Prix Hornindal</a></li>
               <li>Grodås Bilsenter</li>
               <li>Grodås Bilservice</li>
@@ -194,13 +203,13 @@
               <li><a href="https://silversalmon.no" target="_blank" rel="noopener noreferrer">Silver Salmon</a></li>
             </ul>
           </article>
-          <article class="card card-04">
+          <article id="kontor" class="card card--bransje card-04">
             <h3>Kontor, IT og rådgjeving</h3>
             <p>
-              Programvare og IT, media og kommunikasjon, foto og musikk,
-              rekneskap, interiørdesign og teknisk rådgjeving.
+              Programvare og IT, media og kommunikasjon, foto, rekneskap,
+              interiørdesign og teknisk rådgjeving.
             </p>
-            <ul class="partners" style="margin:16px 0 0;">
+            <ul class="bedriftsliste">
               <li>Austheim Foto</li>
               <li>Birkhol Media</li>
               <li>Blue Frontier Media</li>
@@ -209,7 +218,6 @@
               <li>Dønvold Detour</li>
               <li>Ember Technologies</li>
               <li>Espe</li>
-              <li>Ginger Gang Productions</li>
               <li>Grothaug</li>
               <li>Kopilot</li>
               <li>M. Slettebakk Interiørarkitekt</li>
@@ -219,14 +227,14 @@
               <li>ØkoRåd Fjord</li>
             </ul>
           </article>
-          <article class="card card-01">
+          <article id="mat" class="card card--bransje card-01">
             <h3>Mat, overnatting og opplevingar</h3>
             <p>
               Overnatting frå Havila Hotel Raftevold til camping, hyttegrender
               og gardsferie, matkro og pub, skisenteret og treningssenteret.
               Her er òg rideskule, guiding og musikk.
             </p>
-            <ul class="partners" style="margin:16px 0 0;">
+            <ul class="bedriftsliste">
               <li>Basecamp514</li>
               <li>Grodås Camping</li>
               <li><a href="https://havilahotels.no/hornindal/" target="_blank" rel="noopener noreferrer">Havila Hotel Raftevold</a></li>
@@ -243,51 +251,48 @@
               <li><a href="https://xaudio.no" target="_blank" rel="noopener noreferrer">XAUDIO</a></li>
             </ul>
           </article>
-          <article class="card card-02">
+          <article id="transport" class="card card--bransje card-02">
             <h3>Transport</h3>
             <p>
-              Godstransport på veg, krantenester og bilutleige.
+              Godstransport på veg og krantenester.
             </p>
-            <ul class="partners" style="margin:16px 0 0;">
+            <ul class="bedriftsliste">
               <li><a href="https://biolast.no" target="_blank" rel="noopener noreferrer">Biolast</a></li>
               <li>Bruheim</li>
               <li><a href="https://www.jdkran.no" target="_blank" rel="noopener noreferrer">JD Kran</a></li>
-              <li>RH Bilutleige</li>
             </ul>
           </article>
-          <article class="card card-03">
+          <article id="helse" class="card card--bransje card-03">
             <h3>Helse og oppvekst</h3>
             <p>
-              Lege, tannlege, fysioterapeut, kiropraktor, logoped, hud- og
+              Tannlege, fysioterapeut, kiropraktor, logoped, hud- og
               fotterapi, personleg trenar, veterinær og barnehage.
             </p>
-            <ul class="partners" style="margin:16px 0 0;">
-              <li>Berg Legetjenester</li>
+            <ul class="bedriftsliste">
               <li>Fysioterapeut Synnøve Fuglehaug</li>
               <li>Kiropraktikk og helse for alle Hornindal</li>
               <li>Logoped Siv Ragnhild Lillestøl</li>
               <li>Mariannes Hud og Fotterapi</li>
               <li>Personleg trenar Rakel Rustand Bruland</li>
-              <li>Salong Karoline</li>
               <li>Tannlege Svenja Sandbakk</li>
               <li><a href="https://tunaasen.barnehage.no" target="_blank" rel="noopener noreferrer">Tunåsen Barnehage</a></li>
               <li>Veterinær Rebekka Bakke</li>
             </ul>
           </article>
-          <article class="card card-04">
+          <article id="landbruk" class="card card--bransje card-04">
             <h3>Landbruk og skog</h3>
             <p>
               Det er over 80 gardsbruk i Hornindal, og mjølkeproduksjon er
               vanlegast. Mange har òg sau eller anna storfe, og åtte føretak
               driv med skog.
             </p>
-            <ul class="partners" style="margin:16px 0 0;">
+            <ul class="bedriftsliste">
               <li><a href="https://www.nlr.no" target="_blank" rel="noopener noreferrer">Norsk Landbruksrådgiving</a></li>
               <li>Timberman</li>
             </ul>
           </article>
         </div>
-        <p style="margin-top:24px;">
+        <p style="margin-top:24px;max-width:720px;">
           Volda kommune er òg ein stor arbeidsgivar i bygda, med skule, barnehage, omsorgssenter og legekontor.
           Ledige jobbar i regionen finn du på <a href="https://www.nordplussfjord.no/jobb-i-nordfjord" target="_blank" rel="noopener noreferrer">Nord + Fjord</a>.
         </p>

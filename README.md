@@ -68,6 +68,18 @@ Støttespelarane står tre stader: logobandet i `bedrifter.html`, lista i
 endrar du alle. Testen `node .github/scripts/sjekk-bedrifter.mjs
 http://localhost:8744` (med `python3 -m http.server 8744`) sjekkar sida.
 
+Tala i snarvegane øvst på sida («12 bedrifter») står for hand i HTML-en. Legg du
+til eller tek ut ei bedrift, rettar du talet, og testen seier frå om det ikkje
+stemmer med lista. Kor stor ein logo er i logobandet, står i `width` og `height`
+på biletet.
+
+## Stilarket har versjon
+
+Alle sidene lenkjer til `styles.css?v=2`. Når du endrar `styles.css` saman med
+HTML som treng dei nye reglane, aukar du talet på alle sidene. Elles får folk som
+har vore innom før, ny HTML med det gamle stilarket frå nettlesaren i inntil ti
+minutt, og sida ser øydelagd ut.
+
 ## Nyheitsbrevet
 
 Påmeldinga på framsida (`#nyheitsbrev`) sender e-postadressa rett til skjemaet
