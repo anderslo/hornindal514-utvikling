@@ -180,13 +180,14 @@ URL:https://hornindalsrokkenskyrace.com/
 END:VEVENT
 BEGIN:VEVENT
 UID:kornolfestival-2027@hornindal514-utvikling
-DTSTAMP:20261113T221542Z
+DTSTAMP:20261115T050010Z
 DTSTART;VALUE=DATE:20271007
 DTEND;VALUE=DATE:20271011
 SUMMARY:Norsk Kornølfestival
 LOCATION:Honndalshallen\, Hornindal
-DESCRIPTION:Dørene opnar torsdag kl. 19\, og aldersgrensa er 18 år. Bille
- ttar på nettsida til festivalen.
+DESCRIPTION:Dørene opnar torsdag kl. 19 og fredag kl. 17\, og laurdag opna
+ r festivalen kl. 12. Aldersgrensa er 18 år. Billettar på nettsida til fe
+ stivalen.
 URL:https://norskkornolfestival.no/
 END:VEVENT
 BEGIN:VEVENT
