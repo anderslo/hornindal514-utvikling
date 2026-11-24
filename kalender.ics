@@ -149,6 +149,28 @@ LOCATION:Hornindal kyrkje
 URL:https://volda.kyrkja.no/Kalender
 END:VEVENT
 BEGIN:VEVENT
+UID:bygdekino-julenissens-verksted-2026-12-08@hornindal514-utvikling
+DTSTAMP:20261124T215029Z
+DTSTART:20261208T170000Z
+SUMMARY:Bygdekino: Julenissens verksted
+LOCATION:Ljosvang\, Indre Hornindal
+DESCRIPTION:Animert familiefilm om jakta på verkstaden til julenissen\, me
+ d kjende Thorbjørn Egner-songar. Norsk tale\, 1 t. 13 min.\, tillaten for
+  alle. Billetten kostar 110 kr.
+URL:https://kinologg.kino.no/nettsalg/49122
+END:VEVENT
+BEGIN:VEVENT
+UID:bygdekino-ebenezer-2026-12-08@hornindal514-utvikling
+DTSTAMP:20261124T215029Z
+DTSTART:20261208T190000Z
+SUMMARY:Bygdekino: Ebenezer
+LOCATION:Ljosvang\, Indre Hornindal
+DESCRIPTION:Johnny Depp spelar Ebenezer Scrooge i ei skummel utgåve av jul
+ esoga til Charles Dickens. 1 t. 55 min.\, 12-årsgrense. Billetten kostar 
+ 130 kr.
+URL:https://kinologg.kino.no/nettsalg/49375
+END:VEVENT
+BEGIN:VEVENT
 UID:julegudsteneste-2026-12-25@hornindal514-utvikling
 DTSTAMP:20261030T200000Z
 DTSTART:20261225T110000Z
