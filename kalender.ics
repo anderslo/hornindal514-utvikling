@@ -85,9 +85,11 @@ URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
 UID:lutefiskaften-2026-11-27@hornindal514-utvikling
-DTSTAMP:20261030T200000Z
+DTSTAMP:20261124T213737Z
+SEQUENCE:1
+STATUS:CANCELLED
 DTSTART:20261127T180000Z
-SUMMARY:Tradisjonell lutefiskaften
+SUMMARY:Avlyst: Tradisjonell lutefiskaften
 LOCATION:Havila Hotel Raftevold
 DESCRIPTION:Med Kokkekompisene.
 URL:https://hornindal514.no/kva-skjer.html
