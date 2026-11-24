@@ -157,6 +157,21 @@ LOCATION:Hornindal kyrkje
 URL:https://volda.kyrkja.no/Kalender
 END:VEVENT
 BEGIN:VEVENT
+UID:juledagsfest-dolheim-2026-12-29@hornindal514-utvikling
+DTSTAMP:20261124T214630Z
+DTSTART:20261229T180000Z
+DTEND:20261230T010000Z
+SUMMARY:5. juledagsfest på Dølheim
+LOCATION:Ungdomshuset Dølheim\, Hornindal
+DESCRIPTION:Hornindal Ungdomslag inviterer til quiz og dans. Quizen går kl
+ . 20-21.30\, med høgst seks på kvart lag og Oktoberfest-billettar til vi
+ nnarlaget. Påmelding av lag skjer på telefon\, og nummeret står i Faceb
+ ook-arrangementet. Frå kl. 22 spelar 3 Naboar til dans. Inngangen kostar 
+ 200 kr frå kl. 19 og 250 kr etter kl. 22\, og aldersgrensa er 18 år.\nKv
+ art år: 29. desember
+URL:https://www.facebook.com/events/28803149556054677/
+END:VEVENT
+BEGIN:VEVENT
 UID:17-mai-2027@hornindal514-utvikling
 DTSTAMP:20261030T200000Z
 DTSTART;VALUE=DATE:20270517
