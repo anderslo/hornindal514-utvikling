@@ -93,6 +93,31 @@ DESCRIPTION:Med Kokkekompisene.
 URL:https://hornindal514.no/kva-skjer.html
 END:VEVENT
 BEGIN:VEVENT
+UID:julegateopning-2026-11-28@hornindal514-utvikling
+DTSTAMP:20261124T153957Z
+DTSTART:20261128T090000Z
+DTEND:20261128T170000Z
+SUMMARY:Julegateopning
+LOCATION:Grodås sentrum\, Hornindal
+DESCRIPTION:Kl. 15.30 startar nissetoget ved PeBe\, og julegrana ved Klatre
+ parken blir tent. O.P. Lødøen sel graut\, korpset spelar og julenissane 
+ deler ut pakkar til borna. Butikkane har ope til kl. 18\, Spar til kl. 20 
+ og Coop til kl. 21.\nKvart år: ein laurdag i slutten av november
+URL:https://www.facebook.com/groups/798713742175935/posts/1497744595606176/
+END:VEVENT
+BEGIN:VEVENT
+UID:honndalen-freeski-kickoff-2026-11-28@hornindal514-utvikling
+DTSTAMP:20261124T153957Z
+DTSTART:20261128T090000Z
+DTEND:20261128T130000Z
+SUMMARY:Kick-off og dugnad med Honndalen Freeski
+LOCATION:Hornindal Skisenter\, Holebakkane 206\, 6763 Hornindal
+DESCRIPTION:Dugnad for ein knallbra park i skisenteret i vinter. Bålpanna 
+ blir fyrt opp kl. 13\, med pølser\, gløgg og saft. Både nye og erfarne 
+ er velkomne.
+URL:https://www.facebook.com/100066916784223/posts/1464881845752361/
+END:VEVENT
+BEGIN:VEVENT
 UID:korpsbasar-2026-11-29@hornindal514-utvikling
 DTSTAMP:20261030T200000Z
 DTSTART:20261129T130000Z
