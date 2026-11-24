@@ -179,6 +179,20 @@ LOCATION:Hornindal kyrkje
 URL:https://volda.kyrkja.no/Kalender
 END:VEVENT
 BEGIN:VEVENT
+UID:juletrefest-ljosvang-2026-12-27@hornindal514-utvikling
+DTSTAMP:20261124T221428Z
+DTSTART:20261227T140000Z
+DTEND:20261227T160000Z
+SUMMARY:Juletrefest på Ljosvang
+LOCATION:Ljosvang\, Indre Hornindal
+DESCRIPTION:Indre Hornindal Ungdomslag inviterer til gang rundt juletreet\,
+  og kanskje kjem nissen. Enkel servering med påsmurt\, småkaker\, kaffe 
+ og saft\, og loddsal. I fjor kosta det 50 kr for vaksne og 30 kr for born\
+ , og born under skulealder gjekk gratis. Festen er ikkje kunngjord enno.\n
+ Kvart år: 3. juledag\, vanlegvis kl. 15-17.
+URL:https://www.facebook.com/groups/617002601802977/
+END:VEVENT
+BEGIN:VEVENT
 UID:juledagsfest-dolheim-2026-12-29@hornindal514-utvikling
 DTSTAMP:20261124T214630Z
 DTSTART:20261229T180000Z
