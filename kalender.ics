@@ -233,13 +233,13 @@ URL:https://hornindalrundt.no/
 END:VEVENT
 BEGIN:VEVENT
 UID:hornindalsvatnet-maraton-2027@hornindal514-utvikling
-DTSTAMP:20261030T200000Z
-DTSTART;VALUE=DATE:20270731
-DTEND;VALUE=DATE:20270801
+DTSTAMP:20261125T050046Z
+DTSTART;VALUE=DATE:20270724
+DTEND;VALUE=DATE:20270725
 SUMMARY:Hornindalsvatnet Maraton
 LOCATION:Grodås
-DESCRIPTION:Kvart år: laurdag i veke 30. Datoen er rekna ut frå tidlegare
-  år og er ikkje kunngjord enno. Sjekk hos arrangøren.
+DESCRIPTION:Løp langs Hornindalsvatnet sidan 1992\, med distansar heilt ne
+ d til minimaraton.
 URL:https://hornindalsvatnetmaraton.no/
 END:VEVENT
 BEGIN:VEVENT
