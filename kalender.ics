@@ -131,6 +131,21 @@ DESCRIPTION:Konsert kl. 14 med korpset\, aspirantane og drillen. Det blir l
 URL:https://www.facebook.com/100067968147082/posts/1470506428558281/
 END:VEVENT
 BEGIN:VEVENT
+UID:frukostmote-2026-12-02@hornindal514-utvikling
+DTSTAMP:20261127T200321Z
+DTSTART:20261202T073000Z
+DTEND:20261202T090000Z
+SUMMARY:Frukostmøte med Hornindal 514 Utvikling
+LOCATION:Smia\, Ytrehornsvegen 8\, 6763 Hornindal
+DESCRIPTION:Frukostmøtet er ope for alle som har lyst\, anten du er bonde\
+ , tilsett\, sjølvstendig eller leiar. Du får høyre kva Hornindal 514 Ut
+ vikling vil få til\, om oppstarten av gardsmeieriet og om T. Eriksen Eien
+ domsservice\, og så blir det drøs og innspel til styret. Det blir server
+ t frukost\, så meld deg på til Anders Lødemel på 975 30 535 så snart 
+ som råd.
+URL:https://hornindal514.no/kva-skjer.html
+END:VEVENT
+BEGIN:VEVENT
 UID:julemarknad-dolheim-2026-12-06@hornindal514-utvikling
 DTSTAMP:20261122T050010Z
 DTSTART:20261206T110000Z
