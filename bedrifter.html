@@ -50,6 +50,13 @@
 
   <main id="hovudinnhald">
 
+    <p class="notice" id="notis-frukost">
+      <strong>Frukostmøte for alle onsdag 2.&nbsp;desember kl.&nbsp;8.30-10 på Smia.</strong>
+      <span class="notice-meir">Bli betre kjent med Hornindal 514 Utvikling og med kvarandre, anten du er bonde, tilsett, sjølvstendig eller leiar.</span>
+      <a href="mailto:kinehaugen@gmail.com?subject=P%C3%A5melding%20frukostm%C3%B8te%202.%20desember">Meld deg på til Kine</a> ·
+      <a href="assets/frukostmote-2-desember.ics">Legg til i kalender</a>
+    </p>
+
     <p class="notice">
       <strong>Lista er ny.</strong> Vi har henta bedriftene frå Einingsregisteret, og nokre kan mangle eller stå feil.
       <a href="#kontakt-bedrift" style="color:inherit;text-decoration:underline;">Tips oss</a>, så rettar vi det.
@@ -362,6 +369,9 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    // Notisen om frukostmøtet forsvinn av seg sjølv etter 2. desember.
+    var notis = document.getElementById('notis-frukost');
+    if (notis && new Date() >= new Date('2026-12-03')) notis.remove();
     (function () {
       var t = document.querySelector('.nav-toggle');
       var n = document.getElementById('hovudmeny');

@@ -50,10 +50,11 @@
 
   <main id="hovudinnhald">
 
-    <p class="notice" id="notis-12nov">
-      <strong>Ope møte torsdag 12. november kl. 19-21 på Smia.</strong>
-      <span class="notice-meir">Kom og høyr korleis du kan bidra til Hornindal 514 Utvikling, anten du er bedrift, lag, organisasjon eller privatperson.</span>
-      <a href="assets/ope-mote-12-november.ics">Legg til i kalender</a>
+    <p class="notice" id="notis-frukost">
+      <strong>Frukostmøte for alle onsdag 2.&nbsp;desember kl.&nbsp;8.30-10 på Smia.</strong>
+      <span class="notice-meir">Bli betre kjent med Hornindal 514 Utvikling og med kvarandre, anten du er bonde, tilsett, sjølvstendig eller leiar.</span>
+      <a href="mailto:kinehaugen@gmail.com?subject=P%C3%A5melding%20frukostm%C3%B8te%202.%20desember">Meld deg på til Kine</a> ·
+      <a href="assets/frukostmote-2-desember.ics">Legg til i kalender</a>
     </p>
 
     <section class="hero hero-compact">
@@ -237,9 +238,9 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Notisen om det opne møtet forsvinn av seg sjølv etter 12. november.
-    var notis = document.getElementById('notis-12nov');
-    if (notis && new Date() >= new Date('2026-11-13')) notis.remove();
+    // Notisen om frukostmøtet forsvinn av seg sjølv etter 2. desember.
+    var notis = document.getElementById('notis-frukost');
+    if (notis && new Date() >= new Date('2026-12-03')) notis.remove();
     (function () {
       var t = document.querySelector('.nav-toggle');
       var n = document.getElementById('hovudmeny');

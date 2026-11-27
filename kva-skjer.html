@@ -51,10 +51,11 @@
 
   <main id="hovudinnhald">
 
-    <p class="notice" id="notis-12nov">
-      <strong>Ope møte torsdag 12. november kl. 19-21 på Smia.</strong>
-      <span class="notice-meir">Kom og høyr korleis du kan bidra til Hornindal 514 Utvikling, anten du er bedrift, lag, organisasjon eller privatperson.</span>
-      <a href="assets/ope-mote-12-november.ics">Legg til i kalender</a>
+    <p class="notice" id="notis-frukost">
+      <strong>Frukostmøte for alle onsdag 2.&nbsp;desember kl.&nbsp;8.30-10 på Smia.</strong>
+      <span class="notice-meir">Bli betre kjent med Hornindal 514 Utvikling og med kvarandre, anten du er bonde, tilsett, sjølvstendig eller leiar.</span>
+      <a href="mailto:kinehaugen@gmail.com?subject=P%C3%A5melding%20frukostm%C3%B8te%202.%20desember">Meld deg på til Kine</a> ·
+      <a href="assets/frukostmote-2-desember.ics">Legg til i kalender</a>
     </p>
 
     <p class="notice">
@@ -239,7 +240,7 @@
             <div>
               <h4>Frukostmøte med Hornindal 514 Utvikling</h4>
               <p class="agenda-meta">Kl. 8.30-10 · Smia</p>
-              <p>Frukostmøtet er ope for alle som har lyst, anten du er bonde, tilsett, sjølvstendig eller leiar. Du får høyre kva Hornindal 514 Utvikling vil få til, om oppstarten av gardsmeieriet og om T.&nbsp;Eriksen Eiendomsservice, og så blir det drøs og innspel til styret. Det blir servert frukost, så meld deg på til Anders Lødemel på <a href="tel:+4797530535">975&nbsp;30&nbsp;535</a> så snart som råd.</p>
+              <p>Frukostmøtet er ope for alle som har lyst, anten du er bonde, tilsett, sjølvstendig eller leiar. Du får høyre kva Hornindal 514 Utvikling vil få til, om oppstarten av gardsmeieriet og om T.&nbsp;Eriksen Eiendomsservice, og så blir det drøs og innspel til styret. Det blir servert frukost, så meld deg på til Kine Haugen på <a href="mailto:kinehaugen@gmail.com?subject=P%C3%A5melding%20frukostm%C3%B8te%202.%20desember">kinehaugen@gmail.com</a> så snart som råd.</p>
             </div>
           </li>
           <li data-slutt="2026-12-06">
@@ -718,9 +719,9 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Notisen om det opne møtet forsvinn av seg sjølv etter 12. november.
-    var notis = document.getElementById('notis-12nov');
-    if (notis && new Date() >= new Date('2026-11-13')) notis.remove();
+    // Notisen om frukostmøtet forsvinn av seg sjølv etter 2. desember.
+    var notis = document.getElementById('notis-frukost');
+    if (notis && new Date() >= new Date('2026-12-03')) notis.remove();
     // Arrangement forsvinn frå kalenderen dagen etter at dei er over, og eit
     // år utan arrangement att forsvinn med overskrifta.
     document.querySelectorAll('.agenda li[data-slutt]').forEach(function (li) {
